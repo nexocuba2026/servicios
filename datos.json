@@ -3,8 +3,8 @@
     "id": 1,
     "nombre": "Restaurante El Marinero",
     "categoria": "Comida",
-    "descripcion": "Comida criolla y mariscos frescos frente a la bahía.",
-    "descripcion_larga": "Especialidad en pescado a la plancha, langosta y coctelería. Ambiente familiar con vista al mar. Ideal para celebraciones.",
+    "descripcion": "Comida criolla y mariscos frescos frente a la bahía. Ambiente familiar.",
+    "descripcion_larga": "Especialidad en pescado a la plancha, langosta y coctelería. Más de 20 años de experiencia. Salón climatizado y terraza con vista al mar.",
     "telefono": "+53 43 512345",
     "whatsapp": "+5351234567",
     "email": "",
@@ -17,8 +17,15 @@
     },
     "fotos": [
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400",
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400"
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400"
+    ],
+    "trabajos_realizados": [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400"
+    ],
+    "equipo": [
+      { "nombre": "Carlos Pérez", "rol": "Chef", "foto": "https://randomuser.me/api/portraits/men/32.jpg" },
+      { "nombre": "Ana Rodríguez", "rol": "Gerente", "foto": "https://randomuser.me/api/portraits/women/44.jpg" }
     ],
     "coordenadas": { "lat": 22.1245, "lng": -80.4582 },
     "destacado": true,
@@ -26,39 +33,23 @@
   },
   {
     "id": 2,
-    "nombre": "Taxi Cienfuegos Tour",
-    "categoria": "Transporte",
-    "descripcion": "Servicio de taxi turístico y traslados.",
-    "descripcion_larga": "Vehículos modernos con aire acondicionado. Tours por la ciudad, traslados al aeropuerto y viajes provinciales. Choferes bilingües.",
-    "telefono": "+53 43 512346",
-    "whatsapp": "+5352612345",
-    "email": "taxi@cfgtour.co",
-    "direccion": "Parque Martí, Centro",
-    "zona": "Centro",
-    "horario": "24 horas",
-    "redes": {},
-    "fotos": [
-      "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400"
-    ],
-    "coordenadas": { "lat": 22.145, "lng": -80.451 },
-    "destacado": false,
-    "verificado": false
-  },
-  {
-    "id": 3,
-    "nombre": "Construcciones Pérez",
+    "nombre": "Construcciones Torres",
     "categoria": "Construcción",
-    "descripcion": "Albañilería, plomería y electricidad.",
-    "descripcion_larga": "Más de 15 años de experiencia en reformas, construcción de viviendas y trabajos industriales. Presupuestos detallados sin compromiso.",
+    "descripcion": "Reformas, plomería, electricidad. Presupuestos sin compromiso.",
+    "descripcion_larga": "Somos un equipo de 8 profesionales con más de 10 años en el sector. Ofrecemos diseño arquitectónico, construcción llave en mano y mantenimiento.",
     "telefono": "+53 43 512347",
     "whatsapp": "+5353123456",
-    "email": "",
+    "email": "torres@email.cu",
     "direccion": "Calle 37 e/ 42 y 44, La Gloria",
     "zona": "La Gloria",
     "horario": "Lun-Sáb 7:00 – 17:00",
     "redes": {},
     "fotos": [],
+    "trabajos_realizados": [
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400",
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400"
+    ],
+    "equipo": [],
     "coordenadas": { "lat": 22.152, "lng": -80.443 },
     "destacado": true,
     "verificado": true
