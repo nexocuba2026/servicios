@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "nombre": "Restaurante El Marinero",
+    "categoria": "Comida",
+    "descripcion": "Comida criolla y mariscos frescos frente a la bahía. Ambiente familiar.",
+    "telefono": "+53 43 512345",
+    "whatsapp": "+5351234567",
+    "direccion": "Avenida 54 #2901, Punta Gorda",
+    "zona": "Punta Gorda",
+    "horario": "12:00 – 22:00",
+    "redes": {
+      "facebook": "https://facebook.com/elmarinero",
+      "instagram": ""
+    },
+    "fotos": [],
+    "coordenadas": { "lat": 22.1245, "lng": -80.4582 },
+    "destacado": true,
+    "verificado": true
+  },
+  {
+    "id": 2,
+    "nombre": "Taxi Cienfuegos Tour",
+    "categoria": "Transporte",
+    "descripcion": "Servicio de taxi turístico y traslados. Vehículos climatizados.",
+    "telefono": "+53 43 512346",
+    "whatsapp": "+5352612345",
+    "direccion": "Parque Martí, Centro",
+    "zona": "Centro",
+    "horario": "24 horas",
+    "redes": {
+      "facebook": "",
+      "instagram": "@taxicfgtour"
+    },
+    "fotos": [],
+    "coordenadas": { "lat": 22.145, "lng": -80.451 },
+    "destacado": false,
+    "verificado": false
+  },
+  {
+    "id": 3,
+    "nombre": "Construcciones Pérez",
+    "categoria": "Construcción",
+    "descripcion": "Albañilería, plomería y electricidad. Presupuestos sin compromiso.",
+    "telefono": "+53 43 512347",
+    "whatsapp": "+5353123456",
+    "direccion": "Calle 37 e/ 42 y 44, Reparto La Gloria",
+    "zona": "La Gloria",
+    "horario": "Lun-Sáb 7:00 – 17:00",
+    "redes": {},
+    "fotos": [],
+    "coordenadas": { "lat": 22.152, "lng": -80.443 },
+    "destacado": true,
+    "verificado": true
+  },
+  {
+    "id": 4,
+    "nombre": "Consultorio Médico Dr. Suárez",
+    "categoria": "Salud",
+    "descripcion": "Medicina general, pediatría y control de enfermedades crónicas.",
+    "telefono": "+53 43 512348",
+    "whatsapp": "",
+    "direccion": "Avenida 62 #3405, entre 35 y 37",
+    "zona": "Centro",
+    "horario": "8:00 – 16:00",
+    "redes": {},
+    "fotos": [],
+    "coordenadas": { "lat": 22.148, "lng": -80.449 },
+    "destacado": false,
+    "verificado": true
+  },
+  {
+    "id": 5,
+    "nombre": "Salón de Belleza Estilos",
+    "categoria": "Belleza",
+    "descripcion": "Cortes, peinados, maquillaje. Productos profesionales.",
+    "telefono": "+53 43 512349",
+    "whatsapp": "+5354123456",
+    "direccion": "Calle 31 #5602, e/ 56 y 58",
+    "zona": "Centro",
+    "horario": "9:00 – 18:00",
+    "redes": {
+      "instagram": "@estiloscfgos"
+    },
+    "fotos": [],
+    "coordenadas": { "lat": 22.146, "lng": -80.453 },
+    "destacado": false,
+    "verificado": false
+  },
+  {
+    "id": 6,
+    "nombre": "Clases Particulares de Matemáticas",
+    "categoria": "Educación",
+    "descripcion": "Refuerzo escolar para primaria y secundaria. Profesora experimentada.",
+    "telefono": "+53 43 512350",
+    "whatsapp": "",
+    "direccion": "Reparto Pepito Tey, Edif. 12, Apto 3",
+    "zona": "Pepito Tey",
+    "horario": "Lun-Vie 16:00 – 19:00",
+    "redes": {},
+    "fotos": [],
+    "coordenadas": { "lat": 22.138, "lng": -80.462 },
+    "destacado": false,
+    "verificado": false
+  },
+  {
+    "id": 7,
+    "nombre": "Hostal Colonial Vista Mar",
+    "categoria": "Turismo",
+    "descripcion": "Habitaciones con vista al mar, desayuno incluido. Ambiente colonial.",
+    "telefono": "+53 43 512351",
+    "whatsapp": "+5356123456",
+    "direccion": "Calle 35 #5801, Punta Gorda",
+    "zona": "Punta Gorda",
+    "horario": "Recepción 7:00 – 23:00",
+    "redes": {
+      "facebook": "https://facebook.com/hostalvistamar"
+    },
+    "fotos": [],
+    "coordenadas": { "lat": 22.121, "lng": -80.455 },
+    "destacado": true,
+    "verificado": true
+  }
+]
