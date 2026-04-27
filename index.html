@@ -3,132 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios en Cienfuegos · Nexo</title>
+    <title>Nexo · Servicios en Cienfuegos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         :root {
-            --primario: #1a2639;
-            --secundario: #2d3a4f;
-            --acento: #e67e22;
-            --fondo: #f4f6f8;
-            --blanco: #ffffff;
-            --texto: #2c3e50;
-            --gris: #7f8c8d;
+            --fondo: #f5f7fa;
+            --superficie: #ffffff;
+            --primario: #0f1a2e;
+            --primario-claro: #1e2b40;
+            --acento: #d97706;
+            --texto: #1e293b;
+            --texto-suave: #64748b;
+            --borde: #e2e8f0;
+            --sombra: 0 4px 20px rgba(0,0,0,0.04);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--fondo);
             color: var(--texto);
-            line-height: 1.5;
+            line-height: 1.6;
         }
         header {
             background: var(--primario);
             color: white;
-            padding: 1.2rem 1rem;
+            padding: 1.2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .header-contenido {
+        .header-inner {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .logo h1 { font-size: 1.6rem; letter-spacing: -0.5px; }
-        .logo p { font-size: 0.8rem; opacity: 0.8; }
+        .logo h1 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.5px; }
+        .logo p { font-size: 0.8rem; opacity: 0.8; font-weight: 400; }
         .contenedor {
             max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0 1rem;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
         /* Controles */
-        .controles {
+        .barra-busqueda {
             display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.8rem;
-            align-items: center;
-            background: var(--blanco);
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .buscador {
+        .campo-busqueda {
             flex: 3;
-            min-width: 220px;
+            min-width: 240px;
+            position: relative;
         }
-        .buscador input {
+        .campo-busqueda input {
             width: 100%;
-            padding: 0.7rem 1.2rem;
-            border: 1px solid #ddd;
-            border-radius: 30px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--borde);
+            border-radius: 40px;
             font-size: 0.95rem;
-            transition: border 0.2s;
+            background: var(--superficie);
+            transition: 0.2s;
         }
-        .buscador input:focus {
+        .campo-busqueda input:focus {
             outline: none;
             border-color: var(--acento);
+            box-shadow: 0 0 0 3px rgba(217,119,6,0.1);
         }
         .filtros {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
-            align-items: center;
         }
-        .filtros select {
-            padding: 0.6rem 1rem;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            background: white;
+        .filtro-select {
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid var(--borde);
             font-size: 0.9rem;
+            background: var(--superficie);
             cursor: pointer;
+            min-width: 150px;
         }
         /* Grid */
-        .grid-servicios {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.8rem;
         }
         .tarjeta {
-            background: white;
-            border-radius: 16px;
+            background: var(--superficie);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            box-shadow: var(--sombra);
+            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
-            transition: transform 0.25s, box-shadow 0.25s;
         }
         .tarjeta:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
-        .tarjeta .foto {
-            height: 160px;
+        .tarjeta-img {
+            height: 180px;
             background: #cbd5e1;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
-        .tarjeta .foto img {
+        .tarjeta-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .tarjeta .foto .placeholder {
-            font-size: 2.2rem;
-            font-weight: 700;
+        .tarjeta-img .icono-categoria {
+            font-size: 2.5rem;
             color: white;
+            background: var(--primario-claro);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            text-transform: uppercase;
         }
-        .tarjeta .cuerpo {
-            padding: 1.2rem;
-            flex: 1;
+        .tarjeta-body {
+            padding: 1.2rem 1.5rem;
             display: flex;
             flex-direction: column;
+            flex: 1;
         }
         .tarjeta .categoria {
             font-size: 0.75rem;
@@ -136,291 +145,332 @@
             letter-spacing: 0.5px;
             color: var(--acento);
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.25rem;
         }
         .tarjeta h3 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             color: var(--primario);
-            margin-bottom: 0.3rem;
         }
-        .tarjeta .zona {
+        .tarjeta .ubicacion {
             font-size: 0.85rem;
-            color: var(--gris);
+            color: var(--texto-suave);
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.3rem;
         }
-        .tarjeta .descripcion-corta {
+        .tarjeta .descripcion {
             font-size: 0.9rem;
-            color: #555;
+            color: #475569;
+            flex: 1;
             margin-bottom: 1rem;
-            flex-grow: 1;
         }
-        .tarjeta .botones {
+        .tarjeta-acciones {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.6rem;
             margin-top: 0.5rem;
             flex-wrap: wrap;
         }
         .btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.3rem;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            gap: 0.4rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 30px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 500;
             text-decoration: none;
-            border: none;
             cursor: pointer;
             transition: all 0.2s;
+            border: 1px solid transparent;
             background: #f1f5f9;
             color: var(--primario);
         }
-        .btn:hover { background: #e2e8f0; }
+        .btn:hover {
+            background: #e2e8f0;
+        }
         .btn-primario {
             background: var(--primario);
             color: white;
+            border-color: var(--primario);
         }
-        .btn-primario:hover { background: #0f172a; }
+        .btn-primario:hover {
+            background: #0b1321;
+        }
         .btn-acento {
             background: var(--acento);
             color: white;
+            border-color: var(--acento);
         }
-        .btn-acento:hover { background: #d35400; }
-        /* Modal (detalle y ubicación) */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(3px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            animation: fadeIn 0.2s;
+        .btn-acento:hover {
+            background: #b45309;
         }
-        .modal {
-            background: white;
-            border-radius: 20px;
-            max-width: 700px;
-            width: 95%;
-            max-height: 90vh;
-            overflow-y: auto;
+        /* Vista detalle */
+        .vista-detalle {
+            background: var(--superficie);
+            border-radius: 24px;
             padding: 2rem;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: var(--sombra);
+            animation: fadeIn 0.3s ease;
         }
-        .modal-cerrar {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
+        .btn-volver {
+            margin-bottom: 1.5rem;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 0.95rem;
+            color: var(--primario);
             cursor: pointer;
-            color: var(--gris);
-            line-height: 1;
-        }
-        .detalle-galeria {
             display: flex;
+            align-items: center;
             gap: 0.5rem;
+        }
+        .detalle-header {
+            display: flex;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin: 1rem 0;
+            margin-bottom: 2rem;
         }
-        .detalle-galeria img {
-            width: calc(33.33% - 0.5rem);
-            border-radius: 12px;
-            object-fit: cover;
-            height: 130px;
-            flex-grow: 1;
-            min-width: 120px;
+        .detalle-img-principal {
+            flex: 1 1 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            max-height: 300px;
         }
-        .sin-imagen {
-            background: #e2e8f0;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            color: #64748b;
-        }
-        #mapa-modal {
-            height: 350px;
+        .detalle-img-principal img {
             width: 100%;
-            border-radius: 12px;
+            height: 100%;
+            object-fit: cover;
+        }
+        .detalle-info {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .detalle-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .detalle-info .categoria-badge {
+            display: inline-block;
+            background: var(--acento);
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .detalle-contacto {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
             margin-top: 1rem;
         }
-        /* Formulario de solicitud */
-        .seccion-solicitud {
-            background: white;
+        .galeria-trabajos {
+            margin: 2rem 0;
+        }
+        .galeria-trabajos h3, .equipo h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .galeria-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .galeria-grid img:hover {
+            transform: scale(1.03);
+        }
+        .equipo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .miembro {
+            text-align: center;
+        }
+        .miembro img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--borde);
+        }
+        .miembro span {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        .mapa-detalle {
+            height: 300px;
             border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2.5rem;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            margin-top: 2rem;
+        }
+        /* Formulario */
+        .seccion-solicitud {
+            background: var(--superficie);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            box-shadow: var(--sombra);
         }
         .seccion-solicitud h2 {
-            color: var(--primario);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
         }
         .form-grupo {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
         .form-grupo label {
             display: block;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: var(--primario);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
         }
-        .form-grupo input, .form-grupo textarea, .form-grupo select {
+        .form-grupo input, .form-grupo select, .form-grupo textarea {
             width: 100%;
-            padding: 0.7rem;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--borde);
+            border-radius: 12px;
             font-size: 0.95rem;
+            background: #f9fafb;
         }
         .btn-enviar {
             background: var(--acento);
             color: white;
-            border: none;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 2.5rem;
             border-radius: 30px;
-            font-weight: bold;
+            font-weight: 600;
+            border: none;
             cursor: pointer;
+            font-size: 1rem;
         }
         footer {
             text-align: center;
             padding: 2rem;
-            color: var(--gris);
-            font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            border-top: 1px solid var(--borde);
             margin-top: 3rem;
         }
         @media (max-width: 600px) {
-            .grid-servicios { grid-template-columns: 1fr; }
-            .header-contenido { flex-direction: column; text-align: center; }
+            .detalle-header { flex-direction: column; }
+            .header-inner { flex-direction: column; text-align: center; }
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 <header>
-    <div class="header-contenido">
+    <div class="header-inner">
         <div class="logo">
-            <h1>🔧 Servicios en Cienfuegos</h1>
-            <p>Directorio profesional · Administrado por Nexo</p>
+            <h1>Nexo</h1>
+            <p>Directorio de servicios · Cienfuegos</p>
         </div>
     </div>
 </header>
 
 <div class="contenedor">
-    <!-- Controles -->
-    <div class="controles">
-        <div class="buscador">
-            <input type="text" id="buscar" placeholder="🔍 Buscar servicio, zona o descripción...">
+    <!-- Barra de búsqueda y filtros -->
+    <div class="barra-busqueda">
+        <div class="campo-busqueda">
+            <input type="text" id="buscar" placeholder="Buscar por nombre, zona o descripción...">
         </div>
         <div class="filtros">
-            <select id="filtro-categoria">
-                <option value="">Todas las categorías</option>
-            </select>
-            <select id="filtro-zona">
-                <option value="">Todas las zonas</option>
-            </select>
+            <select id="filtro-categoria" class="filtro-select"></select>
+            <select id="filtro-zona" class="filtro-select"></select>
         </div>
     </div>
 
-    <!-- Vista principal: Grid de servicios -->
+    <!-- Vista lista de tarjetas -->
     <div id="vista-lista">
-        <div id="servicios-container" class="grid-servicios"></div>
+        <div id="grid-servicios" class="grid"></div>
     </div>
 
-    <!-- Vista detalle (oculta inicialmente) -->
+    <!-- Vista detalle (oculta al inicio) -->
     <div id="vista-detalle" style="display: none;"></div>
 
-    <!-- Formulario para dueños de negocios -->
-    <div class="seccion-solicitud">
-        <h2>📢 ¿Quieres que tu servicio aparezca aquí?</h2>
-        <p>Solicita la publicación de tu negocio. Nos pondremos en contacto contigo para coordinar los detalles.</p>
+    <!-- Formulario de solicitud -->
+    <div class="seccion-solicitud" id="seccion-formulario">
+        <h2>📋 ¿Quieres aparecer en Nexo?</h2>
+        <p>Solicita la publicación de tu negocio y te contactaremos para coordinar los detalles.</p>
         <form id="form-solicitud" action="https://formspree.io/f/tu-id-personal" method="POST">
             <div class="form-grupo">
-                <label>Nombre de tu negocio o servicio *</label>
-                <input type="text" name="nombre_negocio" required>
+                <label>Nombre del negocio *</label>
+                <input type="text" name="negocio" required>
             </div>
             <div class="form-grupo">
                 <label>Categoría</label>
                 <select name="categoria" id="solicitud-categoria"></select>
             </div>
             <div class="form-grupo">
-                <label>Tu nombre y apellidos</label>
-                <input type="text" name="contacto_nombre">
-            </div>
-            <div class="form-grupo">
-                <label>Teléfono de contacto</label>
-                <input type="tel" name="telefono">
+                <label>Tu nombre completo</label>
+                <input type="text" name="nombre">
             </div>
             <div class="form-grupo">
                 <label>Correo electrónico</label>
                 <input type="email" name="email">
             </div>
             <div class="form-grupo">
-                <label>Mensaje o descripción breve del servicio</label>
+                <label>Teléfono</label>
+                <input type="tel" name="telefono">
+            </div>
+            <div class="form-grupo">
+                <label>Mensaje</label>
                 <textarea name="mensaje" rows="3"></textarea>
             </div>
             <button type="submit" class="btn-enviar">Enviar solicitud</button>
         </form>
-        <p style="font-size:0.8rem; margin-top:0.5rem; color: var(--gris);">* La publicación tiene un costo. Te responderemos con la información.</p>
+        <p style="font-size:0.8rem; margin-top:1rem; color: #64748b;">Las publicaciones tienen un costo. Te responderemos con la información.</p>
     </div>
 </div>
 
 <footer>
-    <p>© 2025 Nexo · Directorio de servicios en Cienfuegos. Todos los derechos reservados.</p>
+    <p>© 2025 Nexo · Directorio profesional de servicios en Cienfuegos. Todos los derechos reservados.</p>
 </footer>
-
-<!-- Modal para ubicación -->
-<div id="modal-ubicacion" class="modal-overlay" style="display: none;">
-    <div class="modal">
-        <button class="modal-cerrar" id="cerrar-modal-ubicacion">&times;</button>
-        <h2 id="nombre-ubicacion"></h2>
-        <div id="mapa-modal"></div>
-    </div>
-</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     (() => {
         let servicios = [];
-        const listaEl = document.getElementById('servicios-container');
+        const grid = document.getElementById('grid-servicios');
         const vistaLista = document.getElementById('vista-lista');
         const vistaDetalle = document.getElementById('vista-detalle');
+        const formSeccion = document.getElementById('seccion-formulario');
         const buscarInput = document.getElementById('buscar');
         const filtroCat = document.getElementById('filtro-categoria');
         const filtroZona = document.getElementById('filtro-zona');
-        const modalUbicacion = document.getElementById('modal-ubicacion');
-        const mapaModalEl = document.getElementById('mapa-modal');
-        let mapaModal = null;
 
         async function cargarServicios() {
             try {
                 const resp = await fetch('datos.json');
-                if (!resp.ok) throw new Error('Error al cargar datos');
                 servicios = await resp.json();
                 inicializarSelects();
                 renderizarLista();
-            } catch(e) {
-                listaEl.innerHTML = '<p>Error cargando servicios. Asegúrate de que datos.json exista.</p>';
+            } catch (e) {
+                grid.innerHTML = '<p>Error al cargar servicios.</p>';
             }
         }
 
         function inicializarSelects() {
-            const categorias = [...new Set(servicios.map(s => s.categoria))].sort();
+            const cats = [...new Set(servicios.map(s => s.categoria))].sort();
             const zonas = [...new Set(servicios.filter(s => s.zona).map(s => s.zona))].sort();
-            filtroCat.innerHTML = '<option value="">Todas las categorías</option>' + categorias.map(c => `<option>${c}</option>`).join('');
+            filtroCat.innerHTML = '<option value="">Todas las categorías</option>' + cats.map(c => `<option>${c}</option>`).join('');
             filtroZona.innerHTML = '<option value="">Todas las zonas</option>' + zonas.map(z => `<option>${z}</option>`).join('');
-            document.getElementById('solicitud-categoria').innerHTML = categorias.map(c => `<option>${c}</option>`).join('');
+            document.getElementById('solicitud-categoria').innerHTML = cats.map(c => `<option>${c}</option>`).join('');
         }
 
-        function obtenerFiltrados() {
+        function filtrar() {
             const texto = buscarInput.value.toLowerCase();
             const cat = filtroCat.value;
             const zona = filtroZona.value;
@@ -433,116 +483,100 @@
         }
 
         function renderizarLista() {
-            const filtrados = obtenerFiltrados();
-            if (filtrados.length === 0) {
-                listaEl.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No se encontraron servicios.</p>';
+            const filtrados = filtrar();
+            if (!filtrados.length) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No se encontraron servicios.</p>';
                 return;
             }
-            listaEl.innerHTML = filtrados.map(s => {
-                const fotoPrincipal = (s.fotos && s.fotos.length) ? s.fotos[0] : null;
-                const fotoHTML = fotoPrincipal
-                    ? `<img src="${fotoPrincipal}" alt="${s.nombre}">`
-                    : `<div class="placeholder" style="background:hsl(${hashCode(s.categoria)%360},40%,70%);">${s.categoria.substring(0,2)}</div>`;
+            grid.innerHTML = filtrados.map(s => {
+                const img = (s.fotos && s.fotos.length) ? `<img src="${s.fotos[0]}" alt="${s.nombre}">` : `<div class="icono-categoria">${s.categoria.substring(0,2)}</div>`;
                 return `
                 <div class="tarjeta">
-                    <div class="foto">${fotoHTML}</div>
-                    <div class="cuerpo">
+                    <div class="tarjeta-img">${img}</div>
+                    <div class="tarjeta-body">
                         <span class="categoria">${s.categoria}</span>
                         <h3>${s.nombre}</h3>
-                        ${s.zona ? `<div class="zona">📍 ${s.zona}</div>` : ''}
-                        <p class="descripcion-corta">${s.descripcion || 'Sin descripción.'}</p>
-                        <div class="botones">
-                            <button class="btn btn-primario btn-ver-mas" data-id="${s.id}">📋 Ver más</button>
-                            ${s.coordenadas && s.coordenadas.lat ? `<button class="btn btn-ubicacion" data-id="${s.id}">📍 Ubicación</button>` : ''}
-                            ${obtenerContactoBoton(s)}
+                        ${s.zona ? `<div class="ubicacion">📍 ${s.zona}</div>` : ''}
+                        <div class="descripcion">${s.descripcion || 'Sin descripción.'}</div>
+                        <div class="tarjeta-acciones">
+                            <button class="btn btn-primario btn-ver-mas" data-id="${s.id}">Ver más</button>
+                            ${s.coordenadas ? `<button class="btn btn-acento btn-ver-mapa" data-id="${s.id}">📍 Ubicación</button>` : ''}
+                            ${s.email ? `<a class="btn" href="mailto:${s.email}">✉️ Contactar</a>` : (s.whatsapp ? `<a class="btn" href="https://wa.me/${s.whatsapp.replace(/\D/g,'')}" target="_blank">💬 WhatsApp</a>` : (s.telefono ? `<a class="btn" href="tel:${s.telefono}">📞 Llamar</a>` : ''))}
                         </div>
                     </div>
                 </div>`;
             }).join('');
-            // Eventos
-            document.querySelectorAll('.btn-ver-mas').forEach(btn => btn.addEventListener('click', (e) => verDetalle(e.target.dataset.id)));
-            document.querySelectorAll('.btn-ubicacion').forEach(btn => btn.addEventListener('click', (e) => mostrarUbicacion(e.target.dataset.id)));
+            document.querySelectorAll('.btn-ver-mas').forEach(b => b.addEventListener('click', (e) => mostrarDetalle(e.target.closest('button').dataset.id)));
+            document.querySelectorAll('.btn-ver-mapa').forEach(b => b.addEventListener('click', (e) => mostrarDetalle(e.target.closest('button').dataset.id, true)));
         }
 
-        function obtenerContactoBoton(s) {
-            if (s.email) {
-                return `<a class="btn btn-acento" href="mailto:${s.email}?subject=Consulta%20desde%20directorio%20Cienfuegos">✉️ Contactar</a>`;
-            } else if (s.whatsapp) {
-                return `<a class="btn btn-acento" href="https://wa.me/${s.whatsapp.replace(/\D/g,'')}" target="_blank">💬 WhatsApp</a>`;
-            } else if (s.telefono) {
-                return `<a class="btn btn-acento" href="tel:${s.telefono}">📞 Llamar</a>`;
-            }
-            return '';
-        }
-
-        function verDetalle(id) {
+        function mostrarDetalle(id, irMapa = false) {
             const s = servicios.find(serv => serv.id == id);
             if (!s) return;
-            let galeriaHTML = '';
-            if (s.fotos && s.fotos.length > 1) {
-                galeriaHTML = '<div class="detalle-galeria">' + s.fotos.map(f => `<img src="${f}" alt="Foto">`).join('') + '</div>';
-            } else if (s.fotos && s.fotos.length === 1) {
-                galeriaHTML = `<div><img src="${s.fotos[0]}" alt="Foto" style="width:100%;max-height:300px;object-fit:cover;border-radius:12px;"></div>`;
-            } else {
-                galeriaHTML = '<div class="sin-imagen">Sin imágenes disponibles</div>';
-            }
-            const html = `
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h2>${s.nombre}</h2>
-                    <button class="btn" id="btn-volver">← Volver</button>
-                </div>
-                <span class="categoria" style="font-size:0.9rem;">${s.categoria}</span>
-                ${s.zona ? `<p><strong>Zona:</strong> ${s.zona}</p>` : ''}
-                <p><strong>Descripción:</strong> ${s.descripcion_larga || s.descripcion || 'No disponible.'}</p>
-                ${s.telefono ? `<p>📞 <a href="tel:${s.telefono}">${s.telefono}</a></p>` : ''}
-                ${s.whatsapp ? `<p>💬 <a href="https://wa.me/${s.whatsapp.replace(/\D/g,'')}" target="_blank">WhatsApp</a></p>` : ''}
-                ${s.email ? `<p>✉️ <a href="mailto:${s.email}">${s.email}</a></p>` : ''}
-                ${s.direccion ? `<p>📍 ${s.direccion}</p>` : ''}
-                ${s.horario ? `<p>🕒 ${s.horario}</p>` : ''}
-                ${s.redes && s.redes.facebook ? `<p>📘 <a href="${s.redes.facebook}" target="_blank">Facebook</a></p>` : ''}
-                ${s.redes && s.redes.instagram ? `<p>📷 <a href="${s.redes.instagram}" target="_blank">Instagram</a></p>` : ''}
-                <h4 style="margin-top:1rem;">Galería de trabajos</h4>
-                ${galeriaHTML}
-                ${s.coordenadas ? `<button class="btn btn-primario" id="btn-ver-mapa-detalle" style="margin-top:1rem;">📍 Ver ubicación en mapa</button>` : ''}
-            `;
             vistaLista.style.display = 'none';
+            formSeccion.style.display = 'none';
+            const fotoPrincipal = (s.fotos && s.fotos.length) ? s.fotos[0] : null;
+            const fotosTrabajos = s.trabajos_realizados || [];
+            const equipo = s.equipo || [];
+            let html = `
+            <div class="vista-detalle">
+                <button class="btn-volver" id="btn-volver">← Volver al directorio</button>
+                <div class="detalle-header">
+                    <div class="detalle-img-principal">
+                        ${fotoPrincipal ? `<img src="${fotoPrincipal}" alt="${s.nombre}">` : `<div class="icono-categoria" style="height:100%;">${s.categoria.substring(0,2)}</div>`}
+                    </div>
+                    <div class="detalle-info">
+                        <span class="categoria-badge">${s.categoria}</span>
+                        <h2>${s.nombre}</h2>
+                        <p style="margin-bottom:1rem;">${s.descripcion_larga || s.descripcion || ''}</p>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.8rem;">
+                            ${s.telefono ? `<a class="btn" href="tel:${s.telefono}">📞 ${s.telefono}</a>` : ''}
+                            ${s.whatsapp ? `<a class="btn" href="https://wa.me/${s.whatsapp.replace(/\D/g,'')}" target="_blank">💬 WhatsApp</a>` : ''}
+                            ${s.email ? `<a class="btn" href="mailto:${s.email}">✉️ ${s.email}</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+                ${s.direccion ? `<p><strong>📍 Dirección:</strong> ${s.direccion}</p>` : ''}
+                ${s.horario ? `<p><strong>🕒 Horario:</strong> ${s.horario}</p>` : ''}
+                ${s.redes && (s.redes.facebook || s.redes.instagram) ? `<p><strong>Redes:</strong> ${s.redes.facebook ? `<a href="${s.redes.facebook}" target="_blank">Facebook</a>` : ''} ${s.redes.instagram ? `<a href="${s.redes.instagram}" target="_blank">Instagram</a>` : ''}</p>` : ''}
+                ${fotosTrabajos.length ? `
+                <div class="galeria-trabajos">
+                    <h3>🖼️ Trabajos realizados</h3>
+                    <div class="galeria-grid">
+                        ${fotosTrabajos.map(f => `<img src="${f}" alt="Trabajo">`).join('')}
+                    </div>
+                </div>` : ''}
+                ${equipo.length ? `
+                <div class="equipo">
+                    <h3>👥 Equipo de trabajo</h3>
+                    <div class="equipo-grid">
+                        ${equipo.map(m => `
+                        <div class="miembro">
+                            <img src="${m.foto || 'https://via.placeholder.com/80'}" alt="${m.nombre}">
+                            <span>${m.nombre}</span>
+                            ${m.rol ? `<small>${m.rol}</small>` : ''}
+                        </div>`).join('')}
+                    </div>
+                </div>` : ''}
+                ${s.coordenadas ? `<div class="mapa-detalle" id="mapa-detalle"></div>` : ''}
+            </div>`;
             vistaDetalle.innerHTML = html;
             vistaDetalle.style.display = 'block';
             document.getElementById('btn-volver').addEventListener('click', () => {
                 vistaDetalle.style.display = 'none';
                 vistaLista.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                formSeccion.style.display = 'block';
             });
-            const btnMapaDetalle = document.getElementById('btn-ver-mapa-detalle');
-            if (btnMapaDetalle) btnMapaDetalle.addEventListener('click', () => mostrarUbicacion(s.id));
-        }
-
-        function mostrarUbicacion(id) {
-            const s = servicios.find(serv => serv.id == id);
-            if (!s || !s.coordenadas) return;
-            document.getElementById('nombre-ubicacion').textContent = s.nombre;
-            modalUbicacion.style.display = 'flex';
-            if (!mapaModal) {
-                mapaModal = L.map('mapa-modal').setView([s.coordenadas.lat, s.coordenadas.lng], 16);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'&copy; OpenStreetMap'}).addTo(mapaModal);
-            } else {
-                mapaModal.setView([s.coordenadas.lat, s.coordenadas.lng], 16);
+            if (s.coordenadas) {
+                const mapEl = document.getElementById('mapa-detalle');
+                if (mapEl) {
+                    const map = L.map(mapEl).setView([s.coordenadas.lat, s.coordenadas.lng], 16);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+                    L.marker([s.coordenadas.lat, s.coordenadas.lng]).addTo(map).bindPopup(s.nombre);
+                    if (irMapa) mapEl.scrollIntoView({ behavior: 'smooth' });
+                }
             }
-            L.marker([s.coordenadas.lat, s.coordenadas.lng]).addTo(mapaModal).bindPopup(s.nombre);
-            setTimeout(() => mapaModal.invalidateSize(), 100);
-        }
-
-        document.getElementById('cerrar-modal-ubicacion').addEventListener('click', () => {
-            modalUbicacion.style.display = 'none';
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target === modalUbicacion) modalUbicacion.style.display = 'none';
-        });
-
-        function hashCode(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
-            return hash;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         buscarInput.addEventListener('input', renderizarLista);
