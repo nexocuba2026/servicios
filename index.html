@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios en Cienfuegos - Guía Local</title>
+    <!-- Leaflet CSS para el mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f9; color: #333; }
+        :root { --azul: #1a5276; --blanco: #ffffff; --coral: #e67e22; --gris-claro: #ecf0f1; }
+        header { background: var(--azul); color: white; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+        header p { font-size: 0.9rem; opacity: 0.9; }
+        .contenedor { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        /* Controles */
+        .controles { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; align-items: center; justify-content: space-between; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .busqueda { flex: 2; min-width: 200px; }
+        .busqueda input { width: 100%; padding: 0.6rem 1rem; border: 1px solid #ccc; border-radius: 20px; font-size: 1rem; }
+        .filtros { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .filtros select, .filtros button { padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #ccc; background: white; font-size: 0.9rem; cursor: pointer; }
+        .filtros button.activo { background: var(--azul); color: white; border-color: var(--azul); }
+        button { transition: all 0.2s; }
+        /* Grid de servicios */
+        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .tarjeta { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s; display: flex; flex-direction: column; }
+        .tarjeta:hover { transform: translateY(-3px); }
+        .tarjeta .img-placeholder { height: 140px; background: #bdc3c7; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; }
+        .tarjeta .info { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+        .tarjeta .categoria { font-size: 0.8rem; text-transform: uppercase; color: var(--coral); font-weight: bold; }
+        .tarjeta h3 { font-size: 1.2rem; margin: 0.2rem 0; color: var(--azul); }
+        .tarjeta .descripcion { font-size: 0.9rem; color: #555; flex-grow: 1; }
+        .tarjeta .detalles { font-size: 0.85rem; color: #444; }
+        .tarjeta .detalles i { margin-right: 0.3rem; color: var(--azul); width: 16px; display: inline-block; }
+        .tarjeta .acciones { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+        .tarjeta .btn-fav { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #ccc; transition: 0.2s; }
+        .tarjeta .btn-fav.guardado { color: #e74c3c; }
+        .tarjeta .badge-destacado { background: #f1c40f; color: #333; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+        .tarjeta .badge-verificado { background: #2ecc71; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; margin-left: 0.3rem; }
+        /* Mapa */
+        .seccion-mapa { margin-top: 2rem; background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        #mapa { height: 400px; border-radius: 8px; }
+        .toggle-mapa { margin-bottom: 1rem; }
+        /* Formulario sugerencia */
+        .formulario-sugerencia { background: white; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .formulario-sugerencia h2 { color: var(--azul); margin-bottom: 1rem; }
+        .form-grupo { margin-bottom: 1rem; }
+        .form-grupo label { display: block; margin-bottom: 0.3rem; font-weight: bold; color: #555; }
+        .form-grupo input, .form-grupo textarea, .form-grupo select { width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+        .form-grupo textarea { resize: vertical; }
+        button[type="submit"] { background: var(--azul); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 25px; font-size: 1rem; cursor: pointer; }
+        .nota { font-size: 0.8rem; color: #777; margin-top: 0.5rem; }
+        footer { text-align: center; padding: 2rem; color: #777; font-size: 0.9rem; }
+        @media (max-width: 600px) {
+            .servicios-grid { grid-template-columns: 1fr; }
+            .controles { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🔧 Servicios en Cienfuegos</h1>
+    <p>Guía colaborativa para locales y visitantes</p>
+</header>
+
+<div class="contenedor">
+    <!-- Controles de búsqueda y filtro -->
+    <div class="controles">
+        <div class="busqueda">
+            <input type="text" id="buscar" placeholder="🔍 Buscar por nombre, descripción o zona...">
+        </div>
+        <div class="filtros">
+            <select id="filtro-categoria">
+                <option value="">Todas las categorías</option>
+            </select>
+            <select id="filtro-zona">
+                <option value="">Todas las zonas</option>
+            </select>
+            <button id="btn-favs" class="">❤️ Mis favoritos</button>
+        </div>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div id="servicios-container" class="servicios-grid"></div>
+
+    <!-- Mapa interactivo -->
+    <div class="seccion-mapa">
+        <button id="toggle-mapa" class="toggle-mapa filtros select" style="margin-bottom:0.5rem;">🗺️ Mostrar / Ocultar mapa</button>
+        <div id="mapa"></div>
+    </div>
+
+    <!-- Formulario para sugerir un nuevo servicio -->
+    <div class="formulario-sugerencia">
+        <h2>📩 Sugerir un servicio</h2>
+        <p style="margin-bottom:1rem;">¿Conoces un negocio o profesional que debería estar aquí? Envíanos la información y la añadiremos después de revisarla.</p>
+        <form id="form-sugerencia" action="https://formspree.io/f/tu-id-personal" method="POST">
+            <!-- Reemplaza el action con tu endpoint de Formspree -->
+            <div class="form-grupo">
+                <label>Nombre del servicio *</label>
+                <input type="text" name="nombre" required>
+            </div>
+            <div class="form-grupo">
+                <label>Categoría</label>
+                <select name="categoria" id="sugerencia-categoria"></select>
+            </div>
+            <div class="form-grupo">
+                <label>Teléfono</label>
+                <input type="tel" name="telefono">
+            </div>
+            <div class="form-grupo">
+                <label>Dirección</label>
+                <input type="text" name="direccion">
+            </div>
+            <div class="form-grupo">
+                <label>Descripción breve</label>
+                <textarea name="descripcion" rows="3"></textarea>
+            </div>
+            <div class="form-grupo">
+                <label>Tu correo (opcional, para contactarte)</label>
+                <input type="email" name="email">
+            </div>
+            <button type="submit">Enviar sugerencia</button>
+        </form>
+        <p class="nota">* Los servicios enviados serán revisados antes de publicarse. Al usar este formulario aceptas que los datos se almacenen temporalmente para verificación.</p>
+    </div>
+</div>
+
+<footer>
+    <p>💙 Guía comunitaria de Cienfuegos · Actualizada semanalmente · Hecho con colaboración ciudadana</p>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    (function() {
+        // ---------- VARIABLES GLOBALES ----------
+        let servicios = [];
+        let mapa = null;
+        let capaMarcadores = null;
+        const contenedor = document.getElementById('servicios-container');
+        const inputBuscar = document.getElementById('buscar');
+        const selectCategoria = document.getElementById('filtro-categoria');
+        const selectZona = document.getElementById('filtro-zona');
+        const btnFavs = document.getElementById('btn-favs');
+        const btnToggleMapa = document.getElementById('toggle-mapa');
+        const mapaDiv = document.getElementById('mapa');
+        let soloFavoritos = false;
+
+        // ---------- CARGA DE DATOS ----------
+        async function cargarServicios() {
+            try {
+                const respuesta = await fetch('datos.json');
+                if (!respuesta.ok) throw new Error('No se pudo cargar datos.json');
+                servicios = await respuesta.json();
+                inicializarInterfaz();
+            } catch (error) {
+                contenedor.innerHTML = '<p style="color:red;">Error al cargar los datos. Asegúrate de que el archivo datos.json esté en el repositorio.</p>';
+                console.error(error);
+            }
+        }
+
+        // ---------- FAVORITOS (localStorage) ----------
+        function obtenerFavoritos() {
+            const favs = localStorage.getItem('serviciosFavs');
+            return favs ? JSON.parse(favs) : [];
+        }
+        function guardarFavorito(id) {
+            let favs = obtenerFavoritos();
+            if (favs.includes(id)) {
+                favs = favs.filter(f => f !== id);
+            } else {
+                favs.push(id);
+            }
+            localStorage.setItem('serviciosFavs', JSON.stringify(favs));
+            renderizarServicios();
+        }
+        function esFavorito(id) {
+            return obtenerFavoritos().includes(id);
+        }
+
+        // ---------- RENDERIZADO DE TARJETAS ----------
+        function renderizarServicios() {
+            const textoBusqueda = inputBuscar.value.toLowerCase().trim();
+            const categoriaFiltro = selectCategoria.value;
+            const zonaFiltro = selectZona.value;
+            const favoritosActuales = obtenerFavoritos();
+
+            let filtrados = servicios;
+
+            // Aplicar búsqueda textual
+            if (textoBusqueda !== '') {
+                filtrados = filtrados.filter(s => 
+                    s.nombre.toLowerCase().includes(textoBusqueda) ||
+                    (s.descripcion && s.descripcion.toLowerCase().includes(textoBusqueda)) ||
+                    (s.zona && s.zona.toLowerCase().includes(textoBusqueda))
+                );
+            }
+
+            // Filtro por categoría
+            if (categoriaFiltro !== '') {
+                filtrados = filtrados.filter(s => s.categoria === categoriaFiltro);
+            }
+
+            // Filtro por zona
+            if (zonaFiltro !== '') {
+                filtrados = filtrados.filter(s => s.zona === zonaFiltro);
+            }
+
+            // Solo favoritos si está activo
+            if (soloFavoritos) {
+                filtrados = filtrados.filter(s => favoritosActuales.includes(s.id));
+            }
+
+            // Ordenar: primero destacados, luego alfabético
+            filtrados.sort((a, b) => {
+                if (a.destacado && !b.destacado) return -1;
+                if (!a.destacado && b.destacado) return 1;
+                return a.nombre.localeCompare(b.nombre);
+            });
+
+            // Construir HTML
+            contenedor.innerHTML = '';
+            if (filtrados.length === 0) {
+                contenedor.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No se encontraron servicios con esos criterios.</p>';
+                return;
+            }
+
+            filtrados.forEach(servicio => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'tarjeta';
+                const foto = servicio.fotos && servicio.fotos.length > 0 ? servicio.fotos[0] : null;
+                const fotoHTML = foto 
+                    ? `<img src="${foto}" alt="${servicio.nombre}" style="width:100%; height:140px; object-fit:cover;">`
+                    : `<div class="img-placeholder" style="background: hsl(${hashCode(servicio.categoria) % 360}, 40%, 75%);">${servicio.categoria.substring(0,2).toUpperCase()}</div>`;
+                
+                let badges = '';
+                if (servicio.destacado) badges += '<span class="badge-destacado">Destacado</span>';
+                if (servicio.verificado) badges += '<span class="badge-verificado">✓ Verificado</span>';
+
+                const favClass = esFavorito(servicio.id) ? 'guardado' : '';
+
+                tarjeta.innerHTML = `
+                    ${fotoHTML}
+                    <div class="info">
+                        <span class="categoria">${servicio.categoria}</span>
+                        <h3>${servicio.nombre} ${badges ? '<br><small>' + badges + '</small>' : ''}</h3>
+                        <p class="descripcion">${servicio.descripcion || 'Sin descripción.'}</p>
+                        <div class="detalles">
+                            ${servicio.telefono ? '<div><i>📞</i> <a href="tel:'+servicio.telefono+'">'+servicio.telefono+'</a></div>' : ''}
+                            ${servicio.whatsapp ? '<div><i>💬</i> <a href="https://wa.me/'+servicio.whatsapp.replace(/\D/g,'')+'" target="_blank">WhatsApp</a></div>' : ''}
+                            ${servicio.direccion ? '<div><i>📍</i> '+servicio.direccion+'</div>' : ''}
+                            ${servicio.zona ? '<div><i>🏘️</i> '+servicio.zona+'</div>' : ''}
+                            ${servicio.horario ? '<div><i>🕒</i> '+servicio.horario+'</div>' : ''}
+                            ${servicio.redes && servicio.redes.facebook ? '<div><i>📘</i> <a href="'+servicio.redes.facebook+'" target="_blank">Facebook</a></div>' : ''}
+                            ${servicio.redes && servicio.redes.instagram ? '<div><i>📷</i> <a href="'+servicio.redes.instagram+'" target="_blank">Instagram</a></div>' : ''}
+                        </div>
+                        <div class="acciones">
+                            <button class="btn-fav ${favClass}" data-id="${servicio.id}" title="Guardar en favoritos">❤️</button>
+                            ${servicio.coordenadas ? '<button class="ver-mapa-btn" data-lat="'+servicio.coordenadas.lat+'" data-lng="'+servicio.coordenadas.lng+'" title="Ver en mapa">🗺️</button>' : ''}
+                        </div>
+                    </div>
+                `;
+                contenedor.appendChild(tarjeta);
+            });
+
+            // Eventos para botones de favorito
+            document.querySelectorAll('.btn-fav').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = btn.getAttribute('data-id');
+                    guardarFavorito(id);
+                });
+            });
+
+            // Eventos para botones de ver en mapa (centrar)
+            document.querySelectorAll('.ver-mapa-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const lat = parseFloat(btn.getAttribute('data-lat'));
+                    const lng = parseFloat(btn.getAttribute('data-lng'));
+                    if (mapa) {
+                        mapa.setView([lat, lng], 17);
+                        document.getElementById('mapa').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Actualizar marcadores en el mapa
+            actualizarMarcadores(filtrados);
+        }
+
+        // ---------- MAPA ----------
+        function inicializarMapa() {
+            mapa = L.map('mapa').setView([22.145, -80.45], 14);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(mapa);
+            capaMarcadores = L.layerGroup().addTo(mapa);
+        }
+
+        function actualizarMarcadores(serviciosFiltrados) {
+            if (!capaMarcadores) return;
+            capaMarcadores.clearLayers();
+            serviciosFiltrados.forEach(s => {
+                if (s.coordenadas && s.coordenadas.lat && s.coordenadas.lng) {
+                    const marcador = L.marker([s.coordenadas.lat, s.coordenadas.lng])
+                        .bindPopup(`<b>${s.nombre}</b><br>${s.categoria}<br>${s.direccion || ''}`);
+                    capaMarcadores.addLayer(marcador);
+                }
+            });
+        }
+
+        function toggleMapa() {
+            if (mapaDiv.style.display === 'none') {
+                mapaDiv.style.display = 'block';
+                if (mapa) mapa.invalidateSize();
+            } else {
+                mapaDiv.style.display = 'none';
+            }
+        }
+
+        // ---------- INICIALIZAR SELECTS ----------
+        function llenarSelects() {
+            const categorias = [...new Set(servicios.map(s => s.categoria))].sort();
+            const zonas = [...new Set(servicios.filter(s => s.zona).map(s => s.zona))].sort();
+
+            selectCategoria.innerHTML = '<option value="">Todas las categorías</option>';
+            categorias.forEach(cat => {
+                selectCategoria.innerHTML += `<option value="${cat}">${cat}</option>`;
+            });
+
+            selectZona.innerHTML = '<option value="">Todas las zonas</option>';
+            zonas.forEach(z => {
+                selectZona.innerHTML += `<option value="${z}">${z}</option>`;
+            });
+
+            // También llenar select del formulario de sugerencia
+            const selectSug = document.getElementById('sugerencia-categoria');
+            if (selectSug) {
+                selectSug.innerHTML = categorias.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
+        }
+
+        // ---------- UTILIDAD ----------
+        function hashCode(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return hash;
+        }
+
+        // ---------- EVENTOS ----------
+        inputBuscar.addEventListener('input', renderizarServicios);
+        selectCategoria.addEventListener('change', renderizarServicios);
+        selectZona.addEventListener('change', renderizarServicios);
+
+        btnFavs.addEventListener('click', function() {
+            soloFavoritos = !soloFavoritos;
+            this.classList.toggle('activo', soloFavoritos);
+            renderizarServicios();
+        });
+
+        btnToggleMapa.addEventListener('click', toggleMapa);
+
+        // ---------- ARRANQUE ----------
+        function inicializarInterfaz() {
+            llenarSelects();
+            renderizarServicios();
+            if (!mapa) inicializarMapa();
+        }
+
+        // Cargar datos al inicio
+        cargarServicios();
+    })();
+</script>
+</body>
+</html>
