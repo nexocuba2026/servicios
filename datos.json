@@ -3,55 +3,47 @@
     "id": 1,
     "nombre": "Restaurante El Marinero",
     "categoria": "Comida",
-    "descripcion": "Comida criolla y mariscos frescos frente a la bahía. Ambiente familiar.",
-    "descripcion_larga": "Especialidad en pescado a la plancha, langosta y coctelería. Más de 20 años de experiencia. Salón climatizado y terraza con vista al mar.",
+    "descripcion": "Mariscos frescos frente a la bahía. Ambiente familiar.",
+    "descripcion_larga": "Especialidad en parrillada de mariscos, pescado a la plancha y coctelería. Salón climatizado y terraza.",
     "telefono": "+53 43 512345",
     "whatsapp": "+5351234567",
     "email": "",
-    "direccion": "Avenida 54 #2901, Punta Gorda",
+    "direccion": "Av. 54 #2901, Punta Gorda",
     "zona": "Punta Gorda",
     "horario": "12:00 – 22:00",
-    "redes": {
-      "facebook": "https://facebook.com/elmarinero",
-      "instagram": ""
-    },
     "fotos": [
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400",
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400"
     ],
-    "trabajos_realizados": [
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400",
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400"
+    "trabajos_realizados": [],
+    "carta": [
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400",
+      "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400"
     ],
-    "equipo": [
-      { "nombre": "Carlos Pérez", "rol": "Chef", "foto": "https://randomuser.me/api/portraits/men/32.jpg" },
-      { "nombre": "Ana Rodríguez", "rol": "Gerente", "foto": "https://randomuser.me/api/portraits/women/44.jpg" }
-    ],
-    "coordenadas": { "lat": 22.1245, "lng": -80.4582 },
-    "destacado": true,
-    "verificado": true
+    "equipo": [],
+    "coordenadas": { "lat": 22.1245, "lng": -80.4582 }
   },
   {
     "id": 2,
-    "nombre": "Construcciones Torres",
+    "nombre": "Construcciones Alba",
     "categoria": "Construcción",
-    "descripcion": "Reformas, plomería, electricidad. Presupuestos sin compromiso.",
-    "descripcion_larga": "Somos un equipo de 8 profesionales con más de 10 años en el sector. Ofrecemos diseño arquitectónico, construcción llave en mano y mantenimiento.",
+    "descripcion": "Reformas, plomería, electricidad.",
+    "descripcion_larga": "Más de 10 años en construcción y mantenimiento. Trabajos garantizados.",
     "telefono": "+53 43 512347",
-    "whatsapp": "+5353123456",
-    "email": "torres@email.cu",
+    "whatsapp": "",
+    "email": "alba@email.cu",
     "direccion": "Calle 37 e/ 42 y 44, La Gloria",
     "zona": "La Gloria",
-    "horario": "Lun-Sáb 7:00 – 17:00",
-    "redes": {},
+    "horario": "Lun-Sáb 7:00-17:00",
     "fotos": [],
     "trabajos_realizados": [
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400",
       "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400"
     ],
-    "equipo": [],
-    "coordenadas": { "lat": 22.152, "lng": -80.443 },
-    "destacado": true,
-    "verificado": true
+    "carta": [],
+    "equipo": [
+      { "nombre": "Juan Alba", "rol": "Maestro", "foto": "https://randomuser.me/api/portraits/men/41.jpg" }
+    ],
+    "coordenadas": { "lat": 22.152, "lng": -80.443 }
   }
 ]
