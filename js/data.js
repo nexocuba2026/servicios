@@ -9,7 +9,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Construcciones Pérez",
-                        logo: "img/logos/construcciones-perez.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Empresa líder en albañilería con más de 15 años de experiencia en Cienfuegos. Realizamos obras civiles, remodelaciones y construcciones desde cero.",
                         tiempo: "15 años en el mercado",
                         objetivos: "Ofrecer soluciones de construcción seguras y duraderas.",
@@ -23,7 +23,7 @@ const servicesData = {
                     },
                     {
                         nombre: "Albañilería García",
-                        logo: "img/logos/albanileria-garcia.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Servicios de albañilería rápida y económica. Especialistas en reparaciones y ampliaciones.",
                         tiempo: "8 años en el mercado",
                         objetivos: "Brindar calidad al mejor precio.",
@@ -42,7 +42,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Pinturas Marín",
-                        logo: "img/logos/pinturas-marin.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Pintura residencial e industrial. Trabajamos con pinturas de alta calidad.",
                         tiempo: "10 años",
                         objetivos: "Embellecer espacios con profesionalismo.",
@@ -61,7 +61,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Techados Cienfuegos",
-                        logo: "img/logos/techados-cfg.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Instalación y reparación de techos de fibrocemento, tejas y planchas metálicas.",
                         tiempo: "12 años",
                         objetivos: "Proteger tu hogar con los mejores materiales.",
@@ -88,7 +88,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "SolarCuba",
-                        logo: "img/logos/solarcuba.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Instalación de sistemas fotovoltaicos para hogares y negocios. Ahorra energía y protege el medio ambiente.",
                         tiempo: "5 años",
                         objetivos: "Promover energía limpia en Cuba.",
@@ -115,7 +115,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Transportes Rápidos",
-                        logo: "img/logos/transportes-rapidos.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Servicio de carga y mudanzas dentro de Cienfuegos y provincias cercanas. Camiones amplios y seguros.",
                         tiempo: "20 años",
                         objetivos: "Trasladar tus bienes con rapidez y seguridad.",
@@ -142,7 +142,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Sabor Cubano",
-                        logo: "img/logos/sabor-cubano.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Restaurante especializado en comida criolla y mariscos frescos. Ambiente familiar.",
                         tiempo: "8 años",
                         objetivos: "Ofrecer la mejor gastronomía cubana.",
@@ -169,7 +169,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Hostal La Perla",
-                        logo: "img/logos/hostal-perla.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Hostal con habitaciones climatizadas, baño privado y desayuno incluido. A 5 minutos del centro.",
                         tiempo: "6 años",
                         objetivos: "Brindar una estancia confortable a nuestros huéspedes.",
@@ -188,7 +188,7 @@ const servicesData = {
 
     // 6. GASTRONOMÍA (CAFETERÍAS Y BARES)
     gastronomia: {
-        nombre: "Gastronomía (Cafeterías y Bares)",
+        nombre: "Gastronomía",
         icono: "fa-coffee",
         subservicios: {
             cafeteria: {
@@ -196,7 +196,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Café del Parque",
-                        logo: "img/logos/cafe-parque.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Cafetería con gran variedad de cafés, tés y repostería. Ambiente acogedor.",
                         tiempo: "4 años",
                         objetivos: "Ser la cafetería de referencia en Cienfuegos.",
@@ -223,7 +223,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Spa Relax",
-                        logo: "img/logos/spa-relax.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Masajes relajantes, descontracturantes y tratamientos faciales. Ambiente zen.",
                         tiempo: "3 años",
                         objetivos: "Aliviar el estrés de nuestros clientes.",
@@ -250,7 +250,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Mecánica AutoFix",
-                        logo: "img/logos/autofix.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Reparación de motores, frenos, suspensión y diagnóstico computarizado.",
                         tiempo: "18 años",
                         objetivos: "Mantener tu auto en perfecto estado.",
@@ -277,7 +277,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Clínica SaludTotal",
-                        logo: "img/logos/saludtotal.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Consultas de medicina general, pediatría y ginecología. Atención personalizada.",
                         tiempo: "10 años",
                         objetivos: "Cuidar la salud de las familias cienfuegueras.",
@@ -304,7 +304,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Barbería Estilo",
-                        logo: "img/logos/barberia-estilo.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Cortes modernos, afeitado clásico y tratamientos capilares.",
                         tiempo: "5 años",
                         objetivos: "Realzar la imagen de nuestros clientes.",
@@ -331,7 +331,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Fontanería Soluciones",
-                        logo: "img/logos/fontaneria-soluciones.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Reparación de fugas, instalación de tuberías y griferías. Urgencias 24h.",
                         tiempo: "12 años",
                         objetivos: "Solucionar problemas de agua rápidamente.",
@@ -358,7 +358,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "ElectroCienfuegos",
-                        logo: "img/logos/electro-cfg.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Instalaciones eléctricas residenciales e industriales. Certificados por la UNE.",
                         tiempo: "15 años",
                         objetivos: "Garantizar instalaciones seguras y eficientes.",
@@ -385,7 +385,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Plomería Total",
-                        logo: "img/logos/plomeria-total.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Destapes, reparación de sanitarios y redes de alcantarillado.",
                         tiempo: "9 años",
                         objetivos: "Mantener tus desagües libres de problemas.",
@@ -412,7 +412,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "TechSoluciones",
-                        logo: "img/logos/techsoluciones.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Reparación de computadoras, tablets y celulares. Instalación de software y redes.",
                         tiempo: "7 años",
                         objetivos: "Resolver tus problemas tecnológicos rápidamente.",
@@ -439,7 +439,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "CleanHouse",
-                        logo: "img/logos/cleanhouse.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Servicio de limpieza profunda para hogares y oficinas. Productos ecológicos.",
                         tiempo: "4 años",
                         objetivos: "Dejar tus espacios impecables.",
@@ -466,7 +466,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Jardines del Sur",
-                        logo: "img/logos/jardines-sur.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Diseño y mantenimiento de jardines, poda de árboles y sistemas de riego.",
                         tiempo: "11 años",
                         objetivos: "Crear espacios verdes armoniosos.",
@@ -493,7 +493,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Eventos Mágicos",
-                        logo: "img/logos/eventos-magicos.png",
+                        logo: "img/logos/default.png",
                         descripcion: "Planificación de bodas, cumpleaños y eventos corporativos. Decoración y catering.",
                         tiempo: "6 años",
                         objetivos: "Hacer de tu evento un momento inolvidable.",
