@@ -45,8 +45,21 @@ main {
     top: 0;
     z-index: 1000;
 }
+
+/* Logo con imagen */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo .nav-logo {
+    height: 40px;          /* ajusta este valor si quieres el logo más grande o más pequeño */
+    width: auto;
+    object-fit: contain;
+}
 .logo h1 { font-size: 1.5rem; font-weight: 700; color: var(--secondary); }
 .logo span { color: var(--primary); }
+
 .nav-links { display: flex; list-style: none; align-items: center; gap: 1.5rem; }
 .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: color var(--transition); }
 .nav-links a:hover { color: var(--primary); }
