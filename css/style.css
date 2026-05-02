@@ -53,7 +53,7 @@ main {
     gap: 0.5rem;
 }
 .logo .nav-logo {
-    height: 8rem;         /* Mismo alto que el texto "Servicios Cienfuegos" (font-size del h1) */
+    height: 3rem;         /* Mismo alto que el texto "Servicios Cienfuegos" (font-size del h1) */
     width: auto;
     object-fit: contain;
 }
