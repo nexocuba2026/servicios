@@ -9,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script>
-        const NOMBRE_SERVICIO = 'jardineria';
-    </script>
 </head>
 <body>
     <header>
@@ -22,7 +19,9 @@
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="submenu-dropdown"></div>
+                    <div class="dropdown-content">
+                        <a href="#mantenimiento">Mantenimiento de Jardines</a>
+                    </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
             </ul>
@@ -30,15 +29,77 @@
         </nav>
     </header>
 
-    <main id="servicio-main"></main>
+    <main id="servicio-main">
+        <div class="servicio-header">
+            <h2><i class="fas fa-seedling"></i> Jardinería</h2>
+        </div>
+
+        <section id="mantenimiento" class="subservicio-section">
+            <h3>Mantenimiento de Jardines</h3>
+            <div class="empresas-grid">
+                <!-- Jardines del Sur -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Jardines+del+Sur&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Jardines del Sur</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355559999</span>
+                            <a href="https://wa.me/5355559999" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:jardin@email.cu">jardin@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Calle 60 #777, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.146,-80.450" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Diseño y mantenimiento de jardines, poda de árboles y sistemas de riego.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 11 años</p>
+                        <p><strong>Objetivos:</strong> Crear espacios verdes armoniosos.</p>
+                        <p><strong>Eslogan:</strong> "Naturaleza que inspira"</p>
+                        <p class="equipo"><strong>Equipo:</strong> Jardineros y paisajistas.</p>
+                    </div>
+                </div>
+                <!-- Verde Vivo -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Verde+Vivo&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Verde Vivo</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355550001</span>
+                            <a href="https://wa.me/5355550001" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:verde@email.cu">verde@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Ave 66 #150, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.144,-80.453" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Huertos urbanos y jardines verticales. Asesoría ecológica.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 5 años</p>
+                        <p><strong>Objetivos:</strong> Sostenibilidad y belleza.</p>
+                        <p><strong>Eslogan:</strong> "Vida en cada hoja"</p>
+                        <p class="equipo"><strong>Equipo:</strong> 3 jardineros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p>Elaborado por <a href="https://nexocuba2026.github.io/neXocuba/" target="_blank">neXo</a> | 2026</p>
         </div>
     </footer>
-
-    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
