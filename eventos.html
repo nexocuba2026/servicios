@@ -9,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script>
-        const NOMBRE_SERVICIO = 'eventos';
-    </script>
 </head>
 <body>
     <header>
@@ -22,7 +19,9 @@
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="submenu-dropdown"></div>
+                    <div class="dropdown-content">
+                        <a href="#organizacion">Organización de Eventos</a>
+                    </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
             </ul>
@@ -30,15 +29,77 @@
         </nav>
     </header>
 
-    <main id="servicio-main"></main>
+    <main id="servicio-main">
+        <div class="servicio-header">
+            <h2><i class="fas fa-glass-cheers"></i> Eventos</h2>
+        </div>
+
+        <section id="organizacion" class="subservicio-section">
+            <h3>Organización de Eventos</h3>
+            <div class="empresas-grid">
+                <!-- Eventos Mágicos -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Eventos+Magicos&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Eventos Mágicos</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355551010</span>
+                            <a href="https://wa.me/5355551010" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:eventos@email.cu">eventos@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Paseo del Prado #200, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.145,-80.455" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Planificación de bodas, cumpleaños y eventos corporativos. Decoración y catering.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 6 años</p>
+                        <p><strong>Objetivos:</strong> Hacer de tu evento un momento inolvidable.</p>
+                        <p><strong>Eslogan:</strong> "Celebra con nosotros"</p>
+                        <p class="equipo"><strong>Equipo:</strong> Organizadores, decoradores y chefs.</p>
+                    </div>
+                </div>
+                <!-- Fiestas del Sur -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Fiestas+del+Sur&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Fiestas del Sur</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355552020</span>
+                            <a href="https://wa.me/5355552020" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:fiestas@email.cu">fiestas@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Calle 25 #789, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.148,-80.448" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Alquiler de mobiliario y sonido. Animación profesional y temáticas personalizadas.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 4 años</p>
+                        <p><strong>Objetivos:</strong> La mejor fiesta de tu vida.</p>
+                        <p><strong>Eslogan:</strong> "Diversión asegurada"</p>
+                        <p class="equipo"><strong>Equipo:</strong> DJs y animadores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p>Elaborado por <a href="https://nexocuba2026.github.io/neXocuba/" target="_blank">neXo</a> | 2026</p>
         </div>
     </footer>
-
-    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
