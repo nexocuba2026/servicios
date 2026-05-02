@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Construcción - Servicios Cienfuegos</title>
+    <title>Servicios Cienfuegos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Indicar el servicio a mostrar -->
-    <script>
-        const NOMBRE_SERVICIO = 'construccion';
-    </script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <h1><a href="index.html" style="text-decoration:none;color:inherit;">Servicios <span>Cienfuegos</span></a></h1>
+                <h1>Servicios <span>Cienfuegos</span></h1>
             </div>
             <ul class="nav-links">
                 <li class="dropdown">
-                    <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="submenu-dropdown">
-                        <!-- Llenado dinámico por script.js -->
+                    <a href="#servicios" class="dropbtn">Servicios <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="construccion.html">Construcción</a>
+                        <a href="energia.html">Energía Fotovoltaica</a>
+                        <a href="transporte.html">Transportación</a>
+                        <a href="restaurante.html">Restaurant</a>
+                        <a href="hospedaje.html">Hospedaje</a>
+                        <a href="gastronomia.html">Gastronomía (Cafeterías y Bares)</a>
+                        <a href="spa.html">Spa</a>
+                        <a href="mecanica.html">Mecánica</a>
+                        <a href="salud.html">Salud</a>
+                        <a href="barberia.html">Barbería</a>
+                        <a href="fontaneria.html">Fontanería</a>
+                        <a href="electricidad.html">Electricidad</a>
+                        <a href="plomeria.html">Plomería</a>
+                        <a href="tecnologico.html">Tecnológico</a>
+                        <a href="limpieza.html">Limpieza</a>
+                        <a href="jardineria.html">Jardinería</a>
+                        <a href="eventos.html">Eventos</a>
                     </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
@@ -35,7 +47,85 @@
         </nav>
     </header>
 
-    <main id="servicio-main"></main>
+    <main>
+        <section class="hero">
+            <h2>Encuentra los mejores servicios en Cienfuegos</h2>
+            <p>Explora nuestra plataforma de servicios locales confiables y conecta directamente con profesionales.</p>
+        </section>
+
+        <section id="servicios" class="servicios">
+            <div class="servicios-grid">
+                <a href="construccion.html" class="servicio-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Construcción</span>
+                </a>
+                <a href="energia.html" class="servicio-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <span>Energía Fotovoltaica</span>
+                </a>
+                <a href="transporte.html" class="servicio-card">
+                    <i class="fas fa-truck"></i>
+                    <span>Transportación</span>
+                </a>
+                <a href="restaurante.html" class="servicio-card">
+                    <i class="fas fa-utensils"></i>
+                    <span>Restaurant</span>
+                </a>
+                <a href="hospedaje.html" class="servicio-card">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hospedaje</span>
+                </a>
+                <a href="gastronomia.html" class="servicio-card">
+                    <i class="fas fa-coffee"></i>
+                    <span>Gastronomía</span>
+                </a>
+                <a href="spa.html" class="servicio-card">
+                    <i class="fas fa-spa"></i>
+                    <span>Spa</span>
+                </a>
+                <a href="mecanica.html" class="servicio-card">
+                    <i class="fas fa-wrench"></i>
+                    <span>Mecánica</span>
+                </a>
+                <a href="salud.html" class="servicio-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Salud</span>
+                </a>
+                <a href="barberia.html" class="servicio-card">
+                    <i class="fas fa-cut"></i>
+                    <span>Barbería</span>
+                </a>
+                <a href="fontaneria.html" class="servicio-card">
+                    <i class="fas fa-faucet"></i>
+                    <span>Fontanería</span>
+                </a>
+                <a href="electricidad.html" class="servicio-card">
+                    <i class="fas fa-bolt"></i>
+                    <span>Electricidad</span>
+                </a>
+                <a href="plomeria.html" class="servicio-card">
+                    <i class="fas fa-toilet"></i>
+                    <span>Plomería</span>
+                </a>
+                <a href="tecnologico.html" class="servicio-card">
+                    <i class="fas fa-laptop"></i>
+                    <span>Tecnológico</span>
+                </a>
+                <a href="limpieza.html" class="servicio-card">
+                    <i class="fas fa-broom"></i>
+                    <span>Limpieza</span>
+                </a>
+                <a href="jardineria.html" class="servicio-card">
+                    <i class="fas fa-seedling"></i>
+                    <span>Jardinería</span>
+                </a>
+                <a href="eventos.html" class="servicio-card">
+                    <i class="fas fa-glass-cheers"></i>
+                    <span>Eventos</span>
+                </a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
