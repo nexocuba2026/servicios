@@ -9,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script>
-        const NOMBRE_SERVICIO = 'mecanica';
-    </script>
 </head>
 <body>
     <header>
@@ -22,7 +19,9 @@
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="submenu-dropdown"></div>
+                    <div class="dropdown-content">
+                        <a href="#taller">Taller Automotriz</a>
+                    </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
             </ul>
@@ -30,15 +29,77 @@
         </nav>
     </header>
 
-    <main id="servicio-main"></main>
+    <main id="servicio-main">
+        <div class="servicio-header">
+            <h2><i class="fas fa-wrench"></i> Mecánica</h2>
+        </div>
+
+        <section id="taller" class="subservicio-section">
+            <h3>Taller Automotriz</h3>
+            <div class="empresas-grid">
+                <!-- AutoFix -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Mecanica+AutoFix&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Mecánica AutoFix</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355551111</span>
+                            <a href="https://wa.me/5355551111" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:autofix@email.cu">autofix@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Calle 60 #333, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.144,-80.454" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Reparación de motores, frenos, suspensión y diagnóstico computarizado.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 18 años</p>
+                        <p><strong>Objetivos:</strong> Mantener tu auto en perfecto estado.</p>
+                        <p><strong>Eslogan:</strong> "Tu auto, nuestra pasión"</p>
+                        <p class="equipo"><strong>Equipo:</strong> Mecánicos especializados y herramientas modernas.</p>
+                    </div>
+                </div>
+                <!-- Taller El Rápido -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Taller+El+Rapido&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Taller El Rápido</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355559090</span>
+                            <a href="https://wa.me/5355559090" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:rapido@email.cu">rapido@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Ave 58 #120, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.145,-80.451" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Servicio express. Cambio de aceite y neumáticos.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 10 años</p>
+                        <p><strong>Objetivos:</strong> Rapidez sin perder calidad.</p>
+                        <p><strong>Eslogan:</strong> "Velocidad y confianza"</p>
+                        <p class="equipo"><strong>Equipo:</strong> 3 mecánicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p>Elaborado por <a href="https://nexocuba2026.github.io/neXocuba/" target="_blank">neXo</a> | 2026</p>
         </div>
     </footer>
-
-    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
