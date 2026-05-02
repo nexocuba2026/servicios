@@ -1,538 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios en Cienfuegos</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        :root {
-            --fondo: #f9fafb;
-            --tarjeta: #ffffff;
-            --texto: #1f2937;
-            --texto-suave: #6b7280;
-            --borde: #e5e7eb;
-            --acento: #3b82b6;
-            --acento-hover: #2563eb;
-            --verde: #10b981;
-            --rojo: #ef4444;
-            --sombra: 0 1px 3px rgba(0,0,0,0.05);
-            --radius: 16px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: var(--fondo);
-            color: var(--texto);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-        header {
-            background: white;
-            border-bottom: 1px solid var(--borde);
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(8px);
-            background: rgba(255,255,255,0.9);
-        }
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #111827;
-            letter-spacing: -0.3px;
-        }
-        .logo span {
-            font-size: 0.8rem;
-            color: var(--texto-suave);
-        }
-        .contenedor {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem;
-        }
-        /* Barra de búsqueda */
-        .barra {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .busqueda {
-            flex: 3;
-            min-width: 200px;
-            position: relative;
-        }
-        .busqueda input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 1px solid var(--borde);
-            border-radius: 40px;
-            font-size: 0.95rem;
-            background: white;
-            transition: 0.2s;
-            outline: none;
-        }
-        .busqueda input:focus {
-            border-color: var(--acento);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-        }
-        .busqueda::before {
-            content: "🔍";
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.9rem;
-        }
-        .filtros select {
-            padding: 0.75rem 1.5rem;
-            border-radius: 40px;
-            border: 1px solid var(--borde);
-            font-size: 0.9rem;
-            background: white;
-            cursor: pointer;
-            outline: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236b7280'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-        }
-        /* Grid servicios */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 1.5rem;
-        }
-        .tarjeta {
-            background: var(--tarjeta);
-            border-radius: var(--radius);
-            border: 1px solid var(--borde);
-            overflow: hidden;
-            transition: 0.2s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--sombra);
-        }
-        .tarjeta:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .tarjeta-img {
-            height: 160px;
-            background: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .tarjeta-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .tarjeta-img .icono-categoria {
-            font-size: 2rem;
-            opacity: 0.4;
-        }
-        .tarjeta-body {
-            padding: 1.2rem;
-            flex: 1;
-        }
-        .categoria {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--acento);
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-        .tarjeta h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-        .zona {
-            font-size: 0.8rem;
-            color: var(--texto-suave);
-            margin-bottom: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
-        }
-        .descripcion {
-            font-size: 0.9rem;
-            color: #4b5563;
-            margin-bottom: 1rem;
-            flex: 1;
-        }
-        .acciones {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.15s;
-            border: 1px solid var(--borde);
-            background: transparent;
-            color: var(--texto);
-            white-space: nowrap;
-        }
-        .btn:hover {
-            background: #f9fafb;
-            border-color: #d1d5db;
-        }
-        .btn-primario {
-            background: transparent;
-            border-color: var(--acento);
-            color: var(--acento);
-        }
-        .btn-primario:hover {
-            background: #eff6ff;
-        }
-        .btn-acento {
-            background: transparent;
-            border-color: var(--verde);
-            color: var(--verde);
-        }
-        .btn-acento:hover {
-            background: #ecfdf5;
-        }
-        .btn-contacto {
-            background: transparent;
-            border-color: #d1d5db;
-            color: #374151;
-        }
-        /* Vista detalle */
-        .vista-detalle {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2rem;
-            border: 1px solid var(--borde);
-            margin-top: 1rem;
-            animation: fadeIn 0.25s;
-        }
-        .btn-volver {
-            background: none;
-            border: none;
-            font-size: 0.9rem;
-            color: var(--acento);
-            cursor: pointer;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .detalle-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        @media (max-width: 700px) {
-            .detalle-grid { grid-template-columns: 1fr; }
-        }
-        .detalle-img img {
-            width: 100%;
-            border-radius: 12px;
-            max-height: 300px;
-            object-fit: cover;
-        }
-        .detalle-info h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .detalle-secciones {
-            margin-top: 2rem;
-        }
-        .seccion {
-            margin-bottom: 2rem;
-        }
-        .seccion h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 0.8rem;
-        }
-        .galeria-grid img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .equipo-lista {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .equipo-miembro {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: #f9fafb;
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-        }
-        .equipo-miembro img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .mapa-detalle {
-            height: 250px;
-            border-radius: 12px;
-            margin-top: 1rem;
-        }
-        /* Formulario */
-        .solicitud {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2rem;
-            margin-top: 3rem;
-            border: 1px solid var(--borde);
-        }
-        .solicitud h2 {
-            margin-bottom: 0.5rem;
-        }
-        .form-grupo {
-            margin-bottom: 1rem;
-        }
-        .form-grupo label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-        .form-grupo input, .form-grupo select, .form-grupo textarea {
-            width: 100%;
-            padding: 0.7rem 1rem;
-            border: 1px solid var(--borde);
-            border-radius: 10px;
-            font-size: 0.95rem;
-        }
-        .btn-enviar {
-            background: var(--acento);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #9ca3af;
-            font-size: 0.85rem;
-            border-top: 1px solid var(--borde);
-            margin-top: 3rem;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servicios Cienfuegos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<header>
-    <div class="logo">
-        <h1>🔧 Servicios en Cienfuegos</h1>
-        <span>Guía local</span>
-    </div>
-</header>
-
-<div class="contenedor">
-    <div class="barra">
-        <div class="busqueda">
-            <input type="text" id="buscar" placeholder="Buscar servicio, zona...">
-        </div>
-        <div class="filtros">
-            <select id="filtro-categoria"></select>
-            <select id="filtro-zona"></select>
-        </div>
-    </div>
-
-    <div id="vista-lista">
-        <div id="grid-servicios" class="grid"></div>
-    </div>
-    <div id="vista-detalle" style="display: none;"></div>
-
-    <div class="solicitud" id="seccion-solicitud">
-        <h2>📋 Publica tu servicio</h2>
-        <p>Envíanos los datos de tu negocio y nos pondremos en contacto.</p>
-        <form id="form-solicitud" action="https://formspree.io/f/tu-id-personal" method="POST">
-            <div class="form-grupo"><label>Negocio</label><input type="text" name="negocio" required></div>
-            <div class="form-grupo"><label>Categoría</label><select name="categoria" id="solicitud-categoria"></select></div>
-            <div class="form-grupo"><label>Tu nombre</label><input type="text" name="nombre"></div>
-            <div class="form-grupo"><label>Email</label><input type="email" name="email"></div>
-            <div class="form-grupo"><label>Teléfono</label><input type="tel" name="telefono"></div>
-            <div class="form-grupo"><label>Mensaje</label><textarea name="mensaje" rows="3"></textarea></div>
-            <button type="submit" class="btn-enviar">Enviar</button>
-        </form>
-    </div>
-</div>
-
-<footer>
-    Administrado por Nexo · © 2025
-</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    (() => {
-        let servicios = [];
-        const grid = document.getElementById('grid-servicios');
-        const vistaLista = document.getElementById('vista-lista');
-        const vistaDetalle = document.getElementById('vista-detalle');
-        const seccionSolicitud = document.getElementById('seccion-solicitud');
-        const buscarInput = document.getElementById('buscar');
-        const filtroCat = document.getElementById('filtro-categoria');
-        const filtroZona = document.getElementById('filtro-zona');
-
-        async function cargar() {
-            const resp = await fetch('datos.json');
-            servicios = await resp.json();
-            const cats = [...new Set(servicios.map(s => s.categoria))].sort();
-            const zonas = [...new Set(servicios.filter(s => s.zona).map(s => s.zona))].sort();
-            filtroCat.innerHTML = '<option value="">Categoría</option>' + cats.map(c => `<option>${c}</option>`).join('');
-            filtroZona.innerHTML = '<option value="">Zona</option>' + zonas.map(z => `<option>${z}</option>`).join('');
-            document.getElementById('solicitud-categoria').innerHTML = cats.map(c => `<option>${c}</option>`).join('');
-            renderLista();
-        }
-
-        function filtrar() {
-            const texto = buscarInput.value.toLowerCase();
-            const cat = filtroCat.value;
-            const zona = filtroZona.value;
-            return servicios.filter(s => {
-                if (texto && !s.nombre.toLowerCase().includes(texto) && !(s.descripcion||'').toLowerCase().includes(texto) && !(s.zona||'').toLowerCase().includes(texto)) return false;
-                if (cat && s.categoria !== cat) return false;
-                if (zona && s.zona !== zona) return false;
-                return true;
-            });
-        }
-
-        function renderLista() {
-            const filtrados = filtrar();
-            if (!filtrados.length) {
-                grid.innerHTML = '<p style="grid-column:1/-1;">Sin resultados.</p>';
-                return;
-            }
-            grid.innerHTML = filtrados.map(s => {
-                const img = (s.fotos && s.fotos.length) ? `<img src="${s.fotos[0]}" alt="">` : `<div class="icono-categoria">${obtenerIcono(s.categoria)}</div>`;
-                return `
-                <div class="tarjeta">
-                    <div class="tarjeta-img">${img}</div>
-                    <div class="tarjeta-body">
-                        <span class="categoria">${s.categoria}</span>
-                        <h3>${s.nombre}</h3>
-                        <div class="zona">📍 ${s.zona || 'Cienfuegos'}</div>
-                        <div class="descripcion">${s.descripcion || ''}</div>
-                        <div class="acciones">
-                            <button class="btn btn-primario ver-mas" data-id="${s.id}">ℹ️ Detalles</button>
-                            ${s.coordenadas ? `<button class="btn btn-acento ver-mapa" data-id="${s.id}">📍 Mapa</button>` : ''}
-                            ${s.email ? `<a class="btn btn-contacto" href="mailto:${s.email}">✉️ Contacto</a>` : (s.whatsapp ? `<a class="btn btn-contacto" href="https://wa.me/${s.whatsapp.replace(/\D/g,'')}" target="_blank">💬 WhatsApp</a>` : (s.telefono ? `<a class="btn btn-contacto" href="tel:${s.telefono}">📞 Llamar</a>` : ''))}
-                        </div>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Servicios <span>Cienfuegos</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#servicios" class="dropbtn">Servicios <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="servicio.html?servicio=construccion">Construcción</a>
+                        <a href="servicio.html?servicio=energia">Energía Fotovoltaica</a>
+                        <a href="servicio.html?servicio=transporte">Transportación</a>
+                        <a href="servicio.html?servicio=restaurante">Restaurant</a>
+                        <a href="servicio.html?servicio=hospedaje">Hospedaje</a>
+                        <a href="servicio.html?servicio=gastronomia">Gastronomía (Cafeterías y Bares)</a>
+                        <a href="servicio.html?servicio=spa">Spa</a>
+                        <a href="servicio.html?servicio=mecanica">Mecánica</a>
+                        <a href="servicio.html?servicio=salud">Salud</a>
+                        <a href="servicio.html?servicio=barberia">Barbería</a>
+                        <a href="servicio.html?servicio=fontaneria">Fontanería</a>
+                        <a href="servicio.html?servicio=electricidad">Electricidad</a>
+                        <a href="servicio.html?servicio=plomeria">Plomería</a>
+                        <a href="servicio.html?servicio=tecnologico">Tecnológico</a>
+                        <a href="servicio.html?servicio=limpieza">Limpieza</a>
+                        <a href="servicio.html?servicio=jardineria">Jardinería</a>
+                        <a href="servicio.html?servicio=eventos">Eventos</a>
                     </div>
-                </div>`;
-            }).join('');
-            document.querySelectorAll('.ver-mas').forEach(b => b.addEventListener('click', e => mostrarDetalle(e.target.dataset.id)));
-            document.querySelectorAll('.ver-mapa').forEach(b => b.addEventListener('click', e => mostrarDetalle(e.target.dataset.id, true)));
-        }
+                </li>
+                <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
-        function obtenerIcono(cat) {
-            const iconos = { 'Comida':'🍽️', 'Transporte':'🚗', 'Construcción':'🏗️', 'Salud':'⚕️', 'Belleza':'💇', 'Educación':'📚', 'Turismo':'🏨' };
-            return iconos[cat] || '🔧';
-        }
+    <main>
+        <section class="hero">
+            <h2>Encuentra los mejores servicios en Cienfuegos</h2>
+            <p>Explora nuestra plataforma de servicios locales confiables y conecta directamente con profesionales.</p>
+        </section>
 
-        function mostrarDetalle(id, irMapa = false) {
-            const s = servicios.find(serv => serv.id == id);
-            if (!s) return;
-            vistaLista.style.display = 'none';
-            seccionSolicitud.style.display = 'none';
-            const foto = (s.fotos && s.fotos.length) ? s.fotos[0] : '';
-            let html = `
-            <div class="vista-detalle">
-                <button class="btn-volver" id="btn-volver">← Volver al listado</button>
-                <div class="detalle-grid">
-                    <div class="detalle-img">${foto ? `<img src="${foto}" alt="">` : '<div style="height:200px;background:#f3f4f6;border-radius:12px;"></div>'}</div>
-                    <div class="detalle-info">
-                        <span style="color:var(--acento);font-weight:600;">${s.categoria}</span>
-                        <h2>${s.nombre}</h2>
-                        <p>${s.descripcion_larga || s.descripcion}</p>
-                        <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.8rem;">
-                            ${s.telefono ? `<span>📞 ${s.telefono}</span>` : ''}
-                            ${s.direccion ? `<span>📍 ${s.direccion}</span>` : ''}
-                            ${s.horario ? `<span>🕒 ${s.horario}</span>` : ''}
-                        </div>
-                    </div>
-                </div>
-                <div class="detalle-secciones">
-                    ${s.trabajos_realizados && s.trabajos_realizados.length ? `
-                    <div class="seccion">
-                        <h3>🖼️ Trabajos realizados</h3>
-                        <div class="galeria-grid">${s.trabajos_realizados.map(f => `<img src="${f}" alt="">`).join('')}</div>
-                    </div>` : ''}
-                    ${s.carta && s.carta.length ? `
-                    <div class="seccion">
-                        <h3>📋 Carta / Menú</h3>
-                        <div class="galeria-grid">${s.carta.map(f => `<img src="${f}" alt="Carta">`).join('')}</div>
-                    </div>` : ''}
-                    ${s.equipo && s.equipo.length ? `
-                    <div class="seccion">
-                        <h3>👥 Equipo</h3>
-                        <div class="equipo-lista">
-                            ${s.equipo.map(m => `
-                            <div class="equipo-miembro">
-                                <img src="${m.foto || 'https://via.placeholder.com/40'}" alt="${m.nombre}">
-                                <div><strong>${m.nombre}</strong>${m.rol ? `<br><small>${m.rol}</small>` : ''}</div>
-                            </div>`).join('')}
-                        </div>
-                    </div>` : ''}
-                    ${s.coordenadas ? `<div class="mapa-detalle" id="mapa-detalle"></div>` : ''}
-                </div>
-            </div>`;
-            vistaDetalle.innerHTML = html;
-            vistaDetalle.style.display = 'block';
-            document.getElementById('btn-volver').addEventListener('click', () => {
-                vistaDetalle.style.display = 'none';
-                vistaLista.style.display = 'block';
-                seccionSolicitud.style.display = 'block';
-                window.scrollTo({ top: 0 });
-            });
-            if (s.coordenadas) {
-                const mapEl = document.getElementById('mapa-detalle');
-                if (mapEl) {
-                    const map = L.map(mapEl).setView([s.coordenadas.lat, s.coordenadas.lng], 16);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-                    L.marker([s.coordenadas.lat, s.coordenadas.lng]).addTo(map).bindPopup(s.nombre);
-                    if (irMapa) mapEl.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-            window.scrollTo({ top: 0 });
-        }
+        <section id="servicios" class="servicios">
+            <div class="servicios-grid">
+                <!-- Tarjetas generadas dinámicamente con JS -->
+                <a href="servicio.html?servicio=construccion" class="servicio-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Construcción</span>
+                </a>
+                <a href="servicio.html?servicio=energia" class="servicio-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <span>Energía Fotovoltaica</span>
+                </a>
+                <a href="servicio.html?servicio=transporte" class="servicio-card">
+                    <i class="fas fa-truck"></i>
+                    <span>Transportación</span>
+                </a>
+                <a href="servicio.html?servicio=restaurante" class="servicio-card">
+                    <i class="fas fa-utensils"></i>
+                    <span>Restaurant</span>
+                </a>
+                <a href="servicio.html?servicio=hospedaje" class="servicio-card">
+                    <i class="fas fa-hotel"></i>
+                    <span>Hospedaje</span>
+                </a>
+                <a href="servicio.html?servicio=gastronomia" class="servicio-card">
+                    <i class="fas fa-coffee"></i>
+                    <span>Gastronomía</span>
+                </a>
+                <a href="servicio.html?servicio=spa" class="servicio-card">
+                    <i class="fas fa-spa"></i>
+                    <span>Spa</span>
+                </a>
+                <a href="servicio.html?servicio=mecanica" class="servicio-card">
+                    <i class="fas fa-wrench"></i>
+                    <span>Mecánica</span>
+                </a>
+                <a href="servicio.html?servicio=salud" class="servicio-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Salud</span>
+                </a>
+                <a href="servicio.html?servicio=barberia" class="servicio-card">
+                    <i class="fas fa-cut"></i>
+                    <span>Barbería</span>
+                </a>
+                <a href="servicio.html?servicio=fontaneria" class="servicio-card">
+                    <i class="fas fa-faucet"></i>
+                    <span>Fontanería</span>
+                </a>
+                <a href="servicio.html?servicio=electricidad" class="servicio-card">
+                    <i class="fas fa-bolt"></i>
+                    <span>Electricidad</span>
+                </a>
+                <a href="servicio.html?servicio=plomeria" class="servicio-card">
+                    <i class="fas fa-toilet"></i>
+                    <span>Plomería</span>
+                </a>
+                <a href="servicio.html?servicio=tecnologico" class="servicio-card">
+                    <i class="fas fa-laptop"></i>
+                    <span>Tecnológico</span>
+                </a>
+                <a href="servicio.html?servicio=limpieza" class="servicio-card">
+                    <i class="fas fa-broom"></i>
+                    <span>Limpieza</span>
+                </a>
+                <a href="servicio.html?servicio=jardineria" class="servicio-card">
+                    <i class="fas fa-seedling"></i>
+                    <span>Jardinería</span>
+                </a>
+                <a href="servicio.html?servicio=eventos" class="servicio-card">
+                    <i class="fas fa-glass-cheers"></i>
+                    <span>Eventos</span>
+                </a>
+            </div>
+        </section>
+    </main>
 
-        buscarInput.addEventListener('input', renderLista);
-        filtroCat.addEventListener('change', renderLista);
-        filtroZona.addEventListener('change', renderLista);
-        cargar();
-    })();
-</script>
+    <footer>
+        <div class="footer-content">
+            <p>Elaborado por <a href="https://nexocuba2026.github.io/neXocuba/" target="_blank">neXo</a> | 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
