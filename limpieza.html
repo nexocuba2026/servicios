@@ -9,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script>
-        const NOMBRE_SERVICIO = 'limpieza';
-    </script>
 </head>
 <body>
     <header>
@@ -22,7 +19,9 @@
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="submenu-dropdown"></div>
+                    <div class="dropdown-content">
+                        <a href="#hogar">Limpieza del Hogar</a>
+                    </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
             </ul>
@@ -30,15 +29,77 @@
         </nav>
     </header>
 
-    <main id="servicio-main"></main>
+    <main id="servicio-main">
+        <div class="servicio-header">
+            <h2><i class="fas fa-broom"></i> Limpieza</h2>
+        </div>
+
+        <section id="hogar" class="subservicio-section">
+            <h3>Limpieza del Hogar</h3>
+            <div class="empresas-grid">
+                <!-- CleanHouse -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=CleanHouse&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>CleanHouse</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355558888</span>
+                            <a href="https://wa.me/5355558888" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:clean@email.cu">clean@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Ave 62 #123, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.147,-80.454" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Limpieza profunda para hogares y oficinas. Productos ecológicos.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 4 años</p>
+                        <p><strong>Objetivos:</strong> Dejar tus espacios impecables.</p>
+                        <p><strong>Eslogan:</strong> "Brillo que se nota"</p>
+                        <p class="equipo"><strong>Equipo:</strong> Personal capacitado y de confianza.</p>
+                    </div>
+                </div>
+                <!-- Sparkle -->
+                <div class="empresa-card">
+                    <div class="card-header">
+                        <img src="https://ui-avatars.com/api/?name=Sparkle&background=0077b6&color=fff&size=100" alt="Logo" class="card-logo" />
+                        <h4>Sparkle</h4>
+                    </div>
+                    <div class="card-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i> <span>+5355559990</span>
+                            <a href="https://wa.me/5355559990" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <a href="mailto:sparkle@email.cu">sparkle@email.cu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>Calle 18 #321, Cienfuegos</span>
+                            <a href="https://www.google.com/maps?q=22.149,-80.452" target="_blank" class="btn-mapa"><i class="fas fa-map"></i> Ver mapa</a>
+                        </div>
+                    </div>
+                    <div class="card-detalle">
+                        <p><strong>Descripción:</strong> Limpieza post-construcción y cristales. Resultados impecables.</p>
+                        <p><strong>Tiempo en el mercado:</strong> 2 años</p>
+                        <p><strong>Objetivos:</strong> Transparencia y confianza.</p>
+                        <p><strong>Eslogan:</strong> "Todo reluce"</p>
+                        <p class="equipo"><strong>Equipo:</strong> 5 limpiadores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
             <p>Elaborado por <a href="https://nexocuba2026.github.io/neXocuba/" target="_blank">neXo</a> | 2026</p>
         </div>
     </footer>
-
-    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
