@@ -1,5 +1,4 @@
 const servicesData = {
-    // 1. CONSTRUCCIÓN
     construccion: {
         nombre: "Construcción",
         icono: "fa-hard-hat",
@@ -77,8 +76,6 @@ const servicesData = {
             }
         }
     },
-
-    // 2. ENERGÍA FOTOVOLTAICA
     energia: {
         nombre: "Energía Fotovoltaica",
         icono: "fa-solar-panel",
@@ -104,8 +101,6 @@ const servicesData = {
             }
         }
     },
-
-    // 3. TRANSPORTACIÓN
     transporte: {
         nombre: "Transportación",
         icono: "fa-truck",
@@ -131,8 +126,6 @@ const servicesData = {
             }
         }
     },
-
-    // 4. RESTAURANT
     restaurante: {
         nombre: "Restaurant",
         icono: "fa-utensils",
@@ -158,8 +151,6 @@ const servicesData = {
             }
         }
     },
-
-    // 5. HOSPEDAJE
     hospedaje: {
         nombre: "Hospedaje",
         icono: "fa-hotel",
@@ -185,8 +176,6 @@ const servicesData = {
             }
         }
     },
-
-    // 6. GASTRONOMÍA (CAFETERÍAS Y BARES)
     gastronomia: {
         nombre: "Gastronomía",
         icono: "fa-coffee",
@@ -212,8 +201,6 @@ const servicesData = {
             }
         }
     },
-
-    // 7. SPA
     spa: {
         nombre: "Spa",
         icono: "fa-spa",
@@ -239,8 +226,6 @@ const servicesData = {
             }
         }
     },
-
-    // 8. MECÁNICA
     mecanica: {
         nombre: "Mecánica",
         icono: "fa-wrench",
@@ -266,8 +251,6 @@ const servicesData = {
             }
         }
     },
-
-    // 9. SALUD
     salud: {
         nombre: "Salud",
         icono: "fa-heartbeat",
@@ -293,8 +276,6 @@ const servicesData = {
             }
         }
     },
-
-    // 10. BARBERÍA
     barberia: {
         nombre: "Barbería",
         icono: "fa-cut",
@@ -320,8 +301,6 @@ const servicesData = {
             }
         }
     },
-
-    // 11. FONTANERÍA
     fontaneria: {
         nombre: "Fontanería",
         icono: "fa-faucet",
@@ -347,8 +326,6 @@ const servicesData = {
             }
         }
     },
-
-    // 12. ELECTRICIDAD
     electricidad: {
         nombre: "Electricidad",
         icono: "fa-bolt",
@@ -374,8 +351,6 @@ const servicesData = {
             }
         }
     },
-
-    // 13. PLOMERÍA
     plomeria: {
         nombre: "Plomería",
         icono: "fa-toilet",
@@ -401,8 +376,6 @@ const servicesData = {
             }
         }
     },
-
-    // 14. TECNOLÓGICO
     tecnologico: {
         nombre: "Tecnológico",
         icono: "fa-laptop",
@@ -428,8 +401,6 @@ const servicesData = {
             }
         }
     },
-
-    // 15. LIMPIEZA
     limpieza: {
         nombre: "Limpieza",
         icono: "fa-broom",
@@ -455,8 +426,6 @@ const servicesData = {
             }
         }
     },
-
-    // 16. JARDINERÍA
     jardineria: {
         nombre: "Jardinería",
         icono: "fa-seedling",
@@ -482,8 +451,6 @@ const servicesData = {
             }
         }
     },
-
-    // 17. EVENTOS
     eventos: {
         nombre: "Eventos",
         icono: "fa-glass-cheers",
