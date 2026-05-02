@@ -3,40 +3,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Servicios Cienfuegos</title>
+    <title>Construcción - Servicios Cienfuegos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Indicar el servicio a mostrar -->
+    <script>
+        const NOMBRE_SERVICIO = 'construccion';
+    </script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <h1>Servicios <span>Cienfuegos</span></h1>
+                <h1><a href="index.html" style="text-decoration:none;color:inherit;">Servicios <span>Cienfuegos</span></a></h1>
             </div>
             <ul class="nav-links">
                 <li class="dropdown">
-                    <a href="#servicios" class="dropbtn">Servicios <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="servicio.html?servicio=construccion">Construcción</a>
-                        <a href="servicio.html?servicio=energia">Energía Fotovoltaica</a>
-                        <a href="servicio.html?servicio=transporte">Transportación</a>
-                        <a href="servicio.html?servicio=restaurante">Restaurant</a>
-                        <a href="servicio.html?servicio=hospedaje">Hospedaje</a>
-                        <a href="servicio.html?servicio=gastronomia">Gastronomía (Cafeterías y Bares)</a>
-                        <a href="servicio.html?servicio=spa">Spa</a>
-                        <a href="servicio.html?servicio=mecanica">Mecánica</a>
-                        <a href="servicio.html?servicio=salud">Salud</a>
-                        <a href="servicio.html?servicio=barberia">Barbería</a>
-                        <a href="servicio.html?servicio=fontaneria">Fontanería</a>
-                        <a href="servicio.html?servicio=electricidad">Electricidad</a>
-                        <a href="servicio.html?servicio=plomeria">Plomería</a>
-                        <a href="servicio.html?servicio=tecnologico">Tecnológico</a>
-                        <a href="servicio.html?servicio=limpieza">Limpieza</a>
-                        <a href="servicio.html?servicio=jardineria">Jardinería</a>
-                        <a href="servicio.html?servicio=eventos">Eventos</a>
+                    <a href="#subservicios" class="dropbtn">Subservicios <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content" id="submenu-dropdown">
+                        <!-- Llenado dinámico por script.js -->
                     </div>
                 </li>
                 <li><a href="https://nexocuba2026.github.io/neXocuba/" target="_blank" class="about-link">Acerca de neXo</a></li>
@@ -47,85 +35,7 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <h2>Encuentra los mejores servicios en Cienfuegos</h2>
-            <p>Explora nuestra plataforma de servicios locales confiables y conecta directamente con profesionales.</p>
-        </section>
-
-        <section id="servicios" class="servicios">
-            <div class="servicios-grid">
-                <a href="servicio.html?servicio=construccion" class="servicio-card">
-                    <i class="fas fa-hard-hat"></i>
-                    <span>Construcción</span>
-                </a>
-                <a href="servicio.html?servicio=energia" class="servicio-card">
-                    <i class="fas fa-solar-panel"></i>
-                    <span>Energía Fotovoltaica</span>
-                </a>
-                <a href="servicio.html?servicio=transporte" class="servicio-card">
-                    <i class="fas fa-truck"></i>
-                    <span>Transportación</span>
-                </a>
-                <a href="servicio.html?servicio=restaurante" class="servicio-card">
-                    <i class="fas fa-utensils"></i>
-                    <span>Restaurant</span>
-                </a>
-                <a href="servicio.html?servicio=hospedaje" class="servicio-card">
-                    <i class="fas fa-hotel"></i>
-                    <span>Hospedaje</span>
-                </a>
-                <a href="servicio.html?servicio=gastronomia" class="servicio-card">
-                    <i class="fas fa-coffee"></i>
-                    <span>Gastronomía</span>
-                </a>
-                <a href="servicio.html?servicio=spa" class="servicio-card">
-                    <i class="fas fa-spa"></i>
-                    <span>Spa</span>
-                </a>
-                <a href="servicio.html?servicio=mecanica" class="servicio-card">
-                    <i class="fas fa-wrench"></i>
-                    <span>Mecánica</span>
-                </a>
-                <a href="servicio.html?servicio=salud" class="servicio-card">
-                    <i class="fas fa-heartbeat"></i>
-                    <span>Salud</span>
-                </a>
-                <a href="servicio.html?servicio=barberia" class="servicio-card">
-                    <i class="fas fa-cut"></i>
-                    <span>Barbería</span>
-                </a>
-                <a href="servicio.html?servicio=fontaneria" class="servicio-card">
-                    <i class="fas fa-faucet"></i>
-                    <span>Fontanería</span>
-                </a>
-                <a href="servicio.html?servicio=electricidad" class="servicio-card">
-                    <i class="fas fa-bolt"></i>
-                    <span>Electricidad</span>
-                </a>
-                <a href="servicio.html?servicio=plomeria" class="servicio-card">
-                    <i class="fas fa-toilet"></i>
-                    <span>Plomería</span>
-                </a>
-                <a href="servicio.html?servicio=tecnologico" class="servicio-card">
-                    <i class="fas fa-laptop"></i>
-                    <span>Tecnológico</span>
-                </a>
-                <a href="servicio.html?servicio=limpieza" class="servicio-card">
-                    <i class="fas fa-broom"></i>
-                    <span>Limpieza</span>
-                </a>
-                <a href="servicio.html?servicio=jardineria" class="servicio-card">
-                    <i class="fas fa-seedling"></i>
-                    <span>Jardinería</span>
-                </a>
-                <a href="servicio.html?servicio=eventos" class="servicio-card">
-                    <i class="fas fa-glass-cheers"></i>
-                    <span>Eventos</span>
-                </a>
-            </div>
-        </section>
-    </main>
+    <main id="servicio-main"></main>
 
     <footer>
         <div class="footer-content">
@@ -133,7 +43,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
