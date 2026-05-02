@@ -146,7 +146,7 @@ main {
 /* Imagen enmarcada en la parte superior de la tarjeta */
 .card-image {
     width: 100%;
-    height: 160px;
+    height: 200px;  /* <-- Altura aumentada para que sea más cuadrada */
     background-color: #c8dbe6;
     display: flex;
     align-items: center;
