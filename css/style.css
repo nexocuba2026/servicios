@@ -1,8 +1,8 @@
 :root {
-    --primary: #0077b6;          /* Azul mar principal */
-    --primary-dark: #005f8c;     /* Azul más oscuro para hover */
-    --secondary: #0a2e4a;        /* Azul profundo (casi navy) */
-    --background: #f5f6fa;       /* Fondo general */
+    --primary: #0077b6;
+    --primary-dark: #005f8c;
+    --secondary: #0a2e4a;
+    --background: #f5f6fa;
     --white: #ffffff;
     --text: #1a1a1a;
     --text-light: #5a6c7d;
