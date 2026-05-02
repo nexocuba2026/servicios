@@ -1,4 +1,5 @@
 const servicesData = {
+    // 1. CONSTRUCCIÓN
     construccion: {
         nombre: "Construcción",
         icono: "fa-hard-hat",
@@ -8,7 +9,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Construcciones Pérez",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/construcciones-perez.png",
                         descripcion: "Empresa líder en albañilería con más de 15 años de experiencia en Cienfuegos. Realizamos obras civiles, remodelaciones y construcciones desde cero.",
                         tiempo: "15 años en el mercado",
                         objetivos: "Ofrecer soluciones de construcción seguras y duraderas.",
@@ -22,7 +23,7 @@ const servicesData = {
                     },
                     {
                         nombre: "Albañilería García",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/albanileria-garcia.png",
                         descripcion: "Servicios de albañilería rápida y económica. Especialistas en reparaciones y ampliaciones.",
                         tiempo: "8 años en el mercado",
                         objetivos: "Brindar calidad al mejor precio.",
@@ -41,7 +42,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Pinturas Marín",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/pinturas-marin.png",
                         descripcion: "Pintura residencial e industrial. Trabajamos con pinturas de alta calidad.",
                         tiempo: "10 años",
                         objetivos: "Embellecer espacios con profesionalismo.",
@@ -60,7 +61,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Techados Cienfuegos",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/techados-cfg.png",
                         descripcion: "Instalación y reparación de techos de fibrocemento, tejas y planchas metálicas.",
                         tiempo: "12 años",
                         objetivos: "Proteger tu hogar con los mejores materiales.",
@@ -76,6 +77,8 @@ const servicesData = {
             }
         }
     },
+
+    // 2. ENERGÍA FOTOVOLTAICA
     energia: {
         nombre: "Energía Fotovoltaica",
         icono: "fa-solar-panel",
@@ -85,7 +88,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "SolarCuba",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/solarcuba.png",
                         descripcion: "Instalación de sistemas fotovoltaicos para hogares y negocios. Ahorra energía y protege el medio ambiente.",
                         tiempo: "5 años",
                         objetivos: "Promover energía limpia en Cuba.",
@@ -101,6 +104,8 @@ const servicesData = {
             }
         }
     },
+
+    // 3. TRANSPORTACIÓN
     transporte: {
         nombre: "Transportación",
         icono: "fa-truck",
@@ -110,7 +115,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Transportes Rápidos",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/transportes-rapidos.png",
                         descripcion: "Servicio de carga y mudanzas dentro de Cienfuegos y provincias cercanas. Camiones amplios y seguros.",
                         tiempo: "20 años",
                         objetivos: "Trasladar tus bienes con rapidez y seguridad.",
@@ -126,6 +131,8 @@ const servicesData = {
             }
         }
     },
+
+    // 4. RESTAURANT
     restaurante: {
         nombre: "Restaurant",
         icono: "fa-utensils",
@@ -135,7 +142,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Sabor Cubano",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/sabor-cubano.png",
                         descripcion: "Restaurante especializado en comida criolla y mariscos frescos. Ambiente familiar.",
                         tiempo: "8 años",
                         objetivos: "Ofrecer la mejor gastronomía cubana.",
@@ -151,6 +158,8 @@ const servicesData = {
             }
         }
     },
+
+    // 5. HOSPEDAJE
     hospedaje: {
         nombre: "Hospedaje",
         icono: "fa-hotel",
@@ -160,7 +169,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Hostal La Perla",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/hostal-perla.png",
                         descripcion: "Hostal con habitaciones climatizadas, baño privado y desayuno incluido. A 5 minutos del centro.",
                         tiempo: "6 años",
                         objetivos: "Brindar una estancia confortable a nuestros huéspedes.",
@@ -176,6 +185,8 @@ const servicesData = {
             }
         }
     },
+
+    // 6. GASTRONOMÍA (CAFETERÍAS Y BARES)
     gastronomia: {
         nombre: "Gastronomía (Cafeterías y Bares)",
         icono: "fa-coffee",
@@ -185,7 +196,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Café del Parque",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/cafe-parque.png",
                         descripcion: "Cafetería con gran variedad de cafés, tés y repostería. Ambiente acogedor.",
                         tiempo: "4 años",
                         objetivos: "Ser la cafetería de referencia en Cienfuegos.",
@@ -201,6 +212,8 @@ const servicesData = {
             }
         }
     },
+
+    // 7. SPA
     spa: {
         nombre: "Spa",
         icono: "fa-spa",
@@ -210,7 +223,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Spa Relax",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/spa-relax.png",
                         descripcion: "Masajes relajantes, descontracturantes y tratamientos faciales. Ambiente zen.",
                         tiempo: "3 años",
                         objetivos: "Aliviar el estrés de nuestros clientes.",
@@ -226,6 +239,8 @@ const servicesData = {
             }
         }
     },
+
+    // 8. MECÁNICA
     mecanica: {
         nombre: "Mecánica",
         icono: "fa-wrench",
@@ -235,7 +250,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Mecánica AutoFix",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/autofix.png",
                         descripcion: "Reparación de motores, frenos, suspensión y diagnóstico computarizado.",
                         tiempo: "18 años",
                         objetivos: "Mantener tu auto en perfecto estado.",
@@ -251,6 +266,8 @@ const servicesData = {
             }
         }
     },
+
+    // 9. SALUD
     salud: {
         nombre: "Salud",
         icono: "fa-heartbeat",
@@ -260,7 +277,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Clínica SaludTotal",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/saludtotal.png",
                         descripcion: "Consultas de medicina general, pediatría y ginecología. Atención personalizada.",
                         tiempo: "10 años",
                         objetivos: "Cuidar la salud de las familias cienfuegueras.",
@@ -276,6 +293,8 @@ const servicesData = {
             }
         }
     },
+
+    // 10. BARBERÍA
     barberia: {
         nombre: "Barbería",
         icono: "fa-cut",
@@ -285,7 +304,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Barbería Estilo",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/barberia-estilo.png",
                         descripcion: "Cortes modernos, afeitado clásico y tratamientos capilares.",
                         tiempo: "5 años",
                         objetivos: "Realzar la imagen de nuestros clientes.",
@@ -301,6 +320,8 @@ const servicesData = {
             }
         }
     },
+
+    // 11. FONTANERÍA
     fontaneria: {
         nombre: "Fontanería",
         icono: "fa-faucet",
@@ -310,7 +331,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Fontanería Soluciones",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/fontaneria-soluciones.png",
                         descripcion: "Reparación de fugas, instalación de tuberías y griferías. Urgencias 24h.",
                         tiempo: "12 años",
                         objetivos: "Solucionar problemas de agua rápidamente.",
@@ -326,6 +347,8 @@ const servicesData = {
             }
         }
     },
+
+    // 12. ELECTRICIDAD
     electricidad: {
         nombre: "Electricidad",
         icono: "fa-bolt",
@@ -335,7 +358,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "ElectroCienfuegos",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/electro-cfg.png",
                         descripcion: "Instalaciones eléctricas residenciales e industriales. Certificados por la UNE.",
                         tiempo: "15 años",
                         objetivos: "Garantizar instalaciones seguras y eficientes.",
@@ -351,6 +374,8 @@ const servicesData = {
             }
         }
     },
+
+    // 13. PLOMERÍA
     plomeria: {
         nombre: "Plomería",
         icono: "fa-toilet",
@@ -360,7 +385,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Plomería Total",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/plomeria-total.png",
                         descripcion: "Destapes, reparación de sanitarios y redes de alcantarillado.",
                         tiempo: "9 años",
                         objetivos: "Mantener tus desagües libres de problemas.",
@@ -376,6 +401,8 @@ const servicesData = {
             }
         }
     },
+
+    // 14. TECNOLÓGICO
     tecnologico: {
         nombre: "Tecnológico",
         icono: "fa-laptop",
@@ -385,7 +412,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "TechSoluciones",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/techsoluciones.png",
                         descripcion: "Reparación de computadoras, tablets y celulares. Instalación de software y redes.",
                         tiempo: "7 años",
                         objetivos: "Resolver tus problemas tecnológicos rápidamente.",
@@ -401,6 +428,8 @@ const servicesData = {
             }
         }
     },
+
+    // 15. LIMPIEZA
     limpieza: {
         nombre: "Limpieza",
         icono: "fa-broom",
@@ -410,7 +439,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "CleanHouse",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/cleanhouse.png",
                         descripcion: "Servicio de limpieza profunda para hogares y oficinas. Productos ecológicos.",
                         tiempo: "4 años",
                         objetivos: "Dejar tus espacios impecables.",
@@ -426,6 +455,8 @@ const servicesData = {
             }
         }
     },
+
+    // 16. JARDINERÍA
     jardineria: {
         nombre: "Jardinería",
         icono: "fa-seedling",
@@ -435,7 +466,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Jardines del Sur",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/jardines-sur.png",
                         descripcion: "Diseño y mantenimiento de jardines, poda de árboles y sistemas de riego.",
                         tiempo: "11 años",
                         objetivos: "Crear espacios verdes armoniosos.",
@@ -451,6 +482,8 @@ const servicesData = {
             }
         }
     },
+
+    // 17. EVENTOS
     eventos: {
         nombre: "Eventos",
         icono: "fa-glass-cheers",
@@ -460,7 +493,7 @@ const servicesData = {
                 empresas: [
                     {
                         nombre: "Eventos Mágicos",
-                        logo: "img/logos/default.png",
+                        logo: "img/logos/eventos-magicos.png",
                         descripcion: "Planificación de bodas, cumpleaños y eventos corporativos. Decoración y catering.",
                         tiempo: "6 años",
                         objetivos: "Hacer de tu evento un momento inolvidable.",
